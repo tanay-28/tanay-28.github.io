@@ -107,68 +107,7 @@
         </div>
       </div>
 
-      <div class="mt-8 grid gap-6 lg:grid-cols-2">
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
-          <div class="grid lg:grid-cols-2">
-            <div class="grid gap-2 p-2">
-              <img src="IMG_1731.JPG" alt="Indoor mmWave receiver cart setup" class="h-56 w-full rounded-2xl object-cover" />
-              <div class="grid grid-cols-2 gap-2">
-                <img src="IMG_1623_jpeg.jpg" alt="Outdoor distributed channel sounding setup" class="h-40 w-full rounded-2xl object-cover" />
-                <img src="IMG_1729.jpeg" alt="Outdoor mmWave sounding carts" class="h-40 w-full rounded-2xl object-cover" />
-              </div>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Research + Hardware</p>
-              <h3 class="mt-3 text-2xl font-bold">Outdoor mmWave channel sounding at 28 GHz</h3>
-
-              <p class="mt-4 leading-7 text-slate-600">
-                Built and deployed a coherent distributed MIMO channel sounder integrating GPSDO-disciplined synchronization, IF-over-fiber interconnects, phased-array systems, and outdoor receiver/transmitter carts for urban 28 GHz propagation measurements.
-              </p>
-
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Hardware stack</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    GPS clocks, phased arrays, IF-over-fiber links, battery-powered mobile carts, RF synchronization, outdoor measurement rigs.
-                  </div>
-                </div>
-
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Research focus</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
-          <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Signal processing</p>
-          <h3 class="mt-3 text-2xl font-bold">Wideband MPC extraction pipeline</h3>
-          <p class="mt-4 leading-7 text-slate-600">
-            Developed a MATLAB pipeline that treats delay-power profiles like images, detects peaks robustly, and clusters multipath components with DBSCAN for correlation analysis.
-          </p>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
-          <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Communications</p>
-          <h3 class="mt-3 text-2xl font-bold">OTFS channel estimation and pilot design</h3>
-          <p class="mt-4 leading-7 text-slate-600">
-            Implemented a full OTFS transceiver chain and proposed coded pilot schemes that improved BER and reduced PAPR in NTN-style channels.
-          </p>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
-          <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Optical systems</p>
-          <h3 class="mt-3 text-2xl font-bold">Multi-mode fiber channel modeling</h3>
-          <p class="mt-4 leading-7 text-slate-600">
-            Modeled MMF propagation, modal dispersion, and mode-dependent loss, then evaluated MMSE and ZF receiver behavior across channel conditions.
-          </p>
-        </article>
-      </div>
+      <div id="projects-grid" class="mt-8 grid gap-6"></div>
     </section>
 
     <section id="research" class="py-10">
@@ -212,5 +151,113 @@
   <footer class="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
     Built with Tailwind CSS • Designed for GitHub Pages
   </footer>
+  <script>
+    const projects = [
+      {
+        type: 'Research + Hardware',
+        title: 'Outdoor mmWave channel sounding at 28 GHz',
+        description: 'Built and deployed a coherent distributed MIMO channel sounder integrating GPSDO-disciplined synchronization, IF-over-fiber interconnects, phased-array systems, and outdoor receiver/transmitter carts for urban 28 GHz propagation measurements.',
+        images: [
+          { src: 'IMG_1731.JPG', alt: 'Indoor mmWave receiver cart setup' },
+          { src: 'IMG_1623_jpeg.jpg', alt: 'Outdoor distributed channel sounding setup' },
+          { src: 'IMG_1729.jpeg', alt: 'Outdoor mmWave sounding carts' }
+        ],
+        meta1Title: 'Hardware stack',
+        meta1Body: 'GPS clocks, phased arrays, IF-over-fiber links, battery-powered mobile carts, RF synchronization, outdoor measurement rigs.',
+        meta2Title: 'Research focus',
+        meta2Body: 'Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.'
+      },
+      {
+        type: 'Signal Processing',
+        title: 'Wideband MPC extraction pipeline',
+        description: 'Developed a MATLAB pipeline that treats delay-power profiles like images, detects peaks robustly, and clusters multipath components with DBSCAN for correlation analysis.',
+        images: [],
+        meta1Title: 'Method',
+        meta1Body: 'Image-style peak detection, DBSCAN clustering, constrained least-squares recovery, and geometric target organization.',
+        meta2Title: 'Outcome',
+        meta2Body: 'Reliable multipath component extraction from scalar PDP data for later correlation analysis.'
+      },
+      {
+        type: 'Communications',
+        title: 'OTFS channel estimation and pilot design',
+        description: 'Implemented a full OTFS transceiver chain and proposed coded pilot schemes that improved BER and reduced PAPR in NTN-style channels.',
+        images: [],
+        meta1Title: 'Key result',
+        meta1Body: '5 dB BER improvement at BER = 10^-3 over the baseline and a 6 dB PAPR reduction.',
+        meta2Title: 'Platform',
+        meta2Body: 'MATLAB OTFS transceiver, MPA detector, LMS/MMSE estimation, and coded pilot design.'
+      },
+      {
+        type: 'Optical Systems',
+        title: 'Multi-mode fiber channel modeling',
+        description: 'Modeled MMF propagation, modal dispersion, and mode-dependent loss, then evaluated MMSE and ZF receiver behavior across channel conditions.',
+        images: [],
+        meta1Title: 'Model',
+        meta1Body: 'Matrix propagation, strong coupling regime, MD/MDL characterization, and capacity analysis.',
+        meta2Title: 'Impact',
+        meta2Body: 'Useful for comparing receiver sensitivity and achievable information rates under varying fiber parameters.'
+      }
+    ];
+
+    function imageCountClass(count) {
+      if (count >= 3) return 'lg:grid-cols-[1.2fr_1fr]';
+      if (count === 2) return 'lg:grid-cols-[1fr_1fr]';
+      if (count === 1) return 'lg:grid-cols-[1fr_0.9fr]';
+      return 'lg:grid-cols-1';
+    }
+
+    function renderProject(project) {
+      const images = project.images || [];
+      const gallery = images.length
+        ? `
+          <div class="grid gap-2 p-2 ${imageCountClass(images.length)} lg:grid">
+            ${images.length === 1
+              ? `<img src="${images[0].src}" alt="${images[0].alt}" class="h-full min-h-[26rem] w-full rounded-2xl object-cover" />`
+              : images.length === 2
+                ? images.map((img, idx) => `<img src="${img.src}" alt="${img.alt}" class="h-72 w-full rounded-2xl object-cover ${idx === 0 ? '' : ''}" />`).join('')
+                : `<div class="grid gap-2">
+                    <img src="${images[0].src}" alt="${images[0].alt}" class="h-56 w-full rounded-2xl object-cover" />
+                    <div class="grid grid-cols-2 gap-2">
+                      <img src="${images[1].src}" alt="${images[1].alt}" class="h-40 w-full rounded-2xl object-cover" />
+                      <img src="${images[2].src}" alt="${images[2].alt}" class="h-40 w-full rounded-2xl object-cover" />
+                    </div>
+                  </div>`}
+          </div>`
+        : '';
+
+      const textColClass = images.length ? 'p-8' : 'p-8 lg:col-span-2';
+      const containerClass = images.length ? 'overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft' : 'rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft';
+
+      return `
+        <article class="${containerClass}">
+          <div class="${images.length ? 'grid lg:grid-cols-2' : ''}">
+            ${gallery}
+            <div class="${textColClass}">
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">${project.type}</p>
+              <h3 class="mt-3 text-2xl font-bold">${project.title}</h3>
+              <p class="mt-4 leading-7 text-slate-600">${project.description}</p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-slate-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">${project.meta1Title}</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta1Body}</div>
+                </div>
+                <div class="rounded-2xl bg-blue-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">${project.meta2Title}</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta2Body}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    const grid = document.getElementById('projects-grid');
+    grid.className = 'mt-8 grid gap-6';
+    grid.innerHTML = projects.map(renderProject).join('');
+
+    if (projects.some(p => (p.images || []).length)) {
+      grid.classList.add('lg:grid-cols-1');
+    }
+  </script>
 </body>
 </html>
