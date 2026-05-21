@@ -600,3 +600,159 @@
   </script>
 </body>
 </html>
+
+<script>
+  const projects = [
+    {
+      type: 'Research + Hardware',
+      title: 'Outdoor mmWave channel sounding at 28 GHz',
+      description: 'Built and deployed a coherent distributed MIMO channel sounder integrating GPSDO-disciplined synchronization, IF-over-fiber interconnects, phased-array systems, and outdoor receiver/transmitter carts for urban 28 GHz propagation measurements.',
+      images: [
+        { src: 'IMG_1731.JPG', alt: 'Indoor mmWave receiver cart setup' },
+        { src: 'IMG_1623_jpeg.jpg', alt: 'Outdoor distributed channel sounding setup' },
+        { src: 'IMG_1729.jpeg', alt: 'Outdoor mmWave sounding carts' }
+      ],
+      meta1Title: 'Hardware stack',
+      meta1Body: 'GPS clocks, phased arrays, IF-over-fiber links, battery-powered mobile carts, RF synchronization, outdoor measurement rigs.',
+      meta2Title: 'Research focus',
+      meta2Body: 'Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.'
+    },
+    {
+      type: 'Communications',
+      title: 'Pilot-coded OTFS channel estimation',
+      description: 'Implemented embedded pilot code-aided delay-Doppler estimation for OTFS and extended the idea to MIMO using code sets with strong correlation properties.',
+      images: [
+        { src: 'MIMO_Channel_P3Correlation.png', alt: 'P3 code correlation outputs for MIMO channel estimation' },
+        { src: 'PAPR.png', alt: 'PAPR CCDF comparison for pilot schemes' },
+        { src: 'Figure_1.png', alt: 'Delay-Doppler pilot arrangement and channel estimation visuals' }
+      ],
+      meta1Title: 'Key result',
+      meta1Body: 'Reduced PAPR while preserving accurate channel estimation and BER performance compared to a single-symbol pilot.',
+      meta2Title: 'Paper outcome',
+      meta2Body: 'IEEE CCNC 2026 publication on embedded pilot code-aided delay-Doppler channel estimation.'
+    },
+    {
+      type: 'Signal Processing',
+      title: 'Underwater acoustic communications and channel scenario analysis',
+      description: 'Built and compared OTFS-based underwater channel models and detector performance across time-delay and delay-Doppler scenarios.',
+      images: [
+        { src: 'Medium_depth_delay_time.png', alt: 'Underwater delay-time channel visualization' },
+        { src: 'Medium_depth_delay_doppler.png', alt: 'Underwater delay-Doppler channel visualization' },
+        { src: 'Medium_deep_BER.png', alt: 'Underwater BER comparison across detectors' }
+      ],
+      meta1Title: 'Channel scenario',
+      meta1Body: 'Medium-depth underwater channel visualizations in both time-delay and delay-Doppler domains.',
+      meta2Title: 'Performance view',
+      meta2Body: 'Detector comparison across MRC, MPA, time-domain LMMSE, OFDM LMMSE, and OFDM ZF.'
+    },
+    {
+      type: 'Optical Systems',
+      title: 'Low-complexity equalization techniques for multi-mode fibers',
+      description: 'Built a multi-section MMF channel model in the strong-coupling regime and studied modal dispersion, mode-dependent losses, mutual information, and achievable rates under varying fiber parameters.',
+      images: [
+        { src: 'MMF_Transmission_Amplitude.png', alt: 'Transmission matrix amplitude in strong coupling regime for D = 132' },
+        { src: 'MMF_Transmission_Phase.png', alt: 'Transmission matrix phase in strong coupling regime for D = 132' },
+        { src: 'MMF_Fiber_Model.png', alt: 'Multi-section fiber model with spans and EDFAs' },
+        { src: 'MMF_Capacity_vs_Modes.png', alt: 'Total capacity with the number of modes' },
+        { src: 'MMF_Capacity_vs_D.png', alt: 'Variation of capacity with D' },
+        { src: 'MMF_Capacity_vs_Section_Length.png', alt: 'Variation of capacity with section length' },
+        { src: 'MMF_LP_Modes.png', alt: 'Spatial shape of the first 6 LP modes' }
+      ],
+      meta1Title: 'Model',
+      meta1Body: 'Strong coupling, multi-section propagation, GD and MDL analysis, and MMSE/LMMSE-style receiver behavior.',
+      meta2Title: 'Results',
+      meta2Body: 'Capacity and penalty trends versus mode count, section length, and amplifier spacing.'
+    }
+  ];
+
+  function renderMedia(images) {
+    if (!images || images.length === 0) return '';
+
+    const cell = (img, extra = '', h = 'h-48') => `
+      <img
+        src="${img.src}"
+        alt="${img.alt}"
+        class="${h} w-full rounded-2xl object-cover ${extra}"
+      />
+    `;
+
+    if (images.length === 1) {
+      return `
+        <div class="p-2">
+          ${cell(images[0], '', 'h-full min-h-[28rem]')}
+        </div>`;
+    }
+
+    if (images.length === 2) {
+      return `
+        <div class="grid gap-2 p-2 md:grid-cols-2">
+          ${cell(images[0], '', 'h-80')}
+          ${cell(images[1], '', 'h-80')}
+        </div>`;
+    }
+
+    if (images.length === 3) {
+      return `
+        <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
+          ${cell(images[0], 'md:col-span-2 md:row-span-2', 'h-72 md:h-full')}
+          ${cell(images[1], '', 'h-36 md:h-full')}
+          ${cell(images[2], '', 'h-36 md:h-full')}
+        </div>`;
+    }
+
+    if (images.length >= 7) {
+      return `
+        <div class="grid gap-2 p-2 md:grid-cols-6 md:auto-rows-[10rem]">
+          ${cell(images[0], 'md:col-span-4 md:row-span-2', 'h-72 md:h-full')}
+          ${cell(images[1], 'md:col-span-2', 'h-40 md:h-full')}
+          ${cell(images[2], 'md:col-span-2', 'h-40 md:h-full')}
+          ${cell(images[3], 'md:col-span-2', 'h-40 md:h-full')}
+          ${cell(images[4], 'md:col-span-3', 'h-44 md:h-full')}
+          ${cell(images[5], 'md:col-span-3', 'h-44 md:h-full')}
+          ${cell(images[6], 'md:col-span-6', 'h-56 md:h-full')}
+        </div>`;
+    }
+
+    return `
+      <div class="grid gap-2 p-2 md:grid-cols-2">
+        ${images.map(img => cell(img)).join('')}
+      </div>`;
+  }
+
+  function renderProject(project) {
+    const hasImages = (project.images || []).length > 0;
+    const wide = project.wide === true;
+
+    const cardClass = hasImages
+      ? `overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft ${wide ? 'lg:col-span-2' : ''}`
+      : 'rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft';
+
+    const contentClass = hasImages ? 'grid gap-0 lg:grid-cols-2' : 'grid gap-0';
+    const textClass = hasImages ? 'p-8' : '';
+
+    return `
+      <article class="${cardClass}">
+        <div class="${contentClass}">
+          ${hasImages ? renderMedia(project.images) : ''}
+          <div class="${textClass}">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">${project.type}</p>
+            <h3 class="mt-3 text-2xl font-bold">${project.title}</h3>
+            <p class="mt-4 leading-7 text-slate-600">${project.description}</p>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <div class="text-sm font-semibold text-slate-900">${project.meta1Title}</div>
+                <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta1Body}</div>
+              </div>
+              <div class="rounded-2xl bg-blue-50 p-4">
+                <div class="text-sm font-semibold text-slate-900">${project.meta2Title}</div>
+                <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta2Body}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  document.getElementById('projects-grid').innerHTML = projects.map(renderProject).join('');
+</script>
