@@ -49,7 +49,7 @@
           I build systems that turn signals into insight.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, multipath extraction, OTFS, and multi-mode fiber modeling.
+          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, OTFS channel estimation, underwater communications, and multi-mode fiber modeling.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
           <a href="#projects" class="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-blue-700">
@@ -94,7 +94,7 @@
         <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:col-span-2">
           <h2 class="text-2xl font-bold tracking-tight">About</h2>
           <p class="mt-4 max-w-3xl text-slate-600 leading-8">
-            I am interested in the intersection of wireless communications, signal processing, and hardware systems. My recent work includes distributed mmWave channel sounding, multipath component extraction from wideband PDP data, OTFS-based channel estimation, and linear channel modeling for multi-mode fibers.
+            I am interested in the intersection of wireless communications, signal processing, and hardware systems. My recent work includes distributed mmWave channel sounding, pilot-coded OTFS channel estimation, underwater communications, and linear channel modeling for multi-mode fibers.
           </p>
         </div>
 
@@ -196,24 +196,333 @@
         meta2Body: 'Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.'
       },
       {
+        type: 'Communications',
+        title: 'Pilot-coded OTFS channel estimation',
+        description: 'Implemented embedded pilot code-aided delay-Doppler estimation for OTFS and extended the idea to MIMO using code sets with strong correlation properties.',
+        images: [
+          { src: 'MIMO Channel_P3Correlation (1).png', alt: 'P3 code correlation outputs for MIMO channel estimation' },
+          { src: 'PAPR (1).png', alt: 'PAPR CCDF comparison for pilot schemes' },
+          { src: 'Figure_1 (1).png', alt: 'Delay-Doppler pilot arrangement and channel estimation visuals' }
+        ],
+        meta1Title: 'Key result',
+        meta1Body: 'Reduced PAPR while preserving accurate channel estimation and BER performance compared to a single-symbol pilot.',
+        meta2Title: 'Paper outcome',
+        meta2Body: 'IEEE CCNC 2026 publication on embedded pilot code-aided delay-Doppler channel estimation.'
+      },
+      {
         type: 'Signal Processing',
-        title: 'Wideband MPC extraction pipeline',
-        description: 'Developed a MATLAB pipeline that treats delay-power profiles like images, detects peaks robustly, and clusters multipath components with DBSCAN for correlation analysis.',
+        title: 'Underwater acoustic communications and channel scenario analysis',
+        description: 'Built and compared OTFS-based underwater channel models and detector performance across time-delay and delay-Doppler scenarios.',
+        images: [
+          { src: 'Medium depth delay-time 2 (1).png', alt: 'Underwater delay-time channel visualization' },
+          { src: 'Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png', alt: 'Underwater delay-Doppler channel visualization' },
+          { src: 'Medium-deep N=16 M=64 16Q.png', alt: 'Underwater BER comparison across detectors' }
+        ],
+        meta1Title: 'Channel scenario',
+        meta1Body: 'Medium-depth underwater channel visualizations in both time-delay and delay-Doppler domains.',
+        meta2Title: 'Performance view',
+        meta2Body: 'Detector comparison across MRC, MPA, time-domain LMMSE, OFDM LMMSE, and OFDM ZF.'
+      },
+      {
+        type: 'Optical Systems',
+        title: 'Multi-mode fiber channel modeling',
+        description: 'Modeled MMF propagation, modal dispersion, and mode-dependent loss, then evaluated MMSE and ZF receiver behavior across channel conditions.',
         images: [],
-        meta1Title: 'Method',
-        meta1Body: 'Image-style peak detection, DBSCAN clustering, constrained least-squares recovery, and geometric target organization.',
-        meta2Title: 'Outcome',
-        meta2Body: 'Reliable multipath component extraction from scalar PDP data for later correlation analysis.'
+        meta1Title: 'Model',
+        meta1Body: 'Matrix propagation, strong coupling regime, MD/MDL characterization, and capacity analysis.',
+        meta2Title: 'Impact',
+        meta2Body: 'Useful for comparing receiver sensitivity and achievable information rates under varying fiber parameters.'
+      }
+    ];
+
+    function renderMedia(images) {
+      if (!images || images.length === 0) return '';
+
+      if (images.length === 1) {
+        return `
+          <div class="p-2">
+            <img src="${images[0].src}" alt="${images[0].alt}" class="h-full min-h-[28rem] w-full rounded-2xl object-cover" />
+          </div>`;
+      }
+
+      if (images.length === 2) {
+        return `
+          <div class="grid gap-2 p-2 md:grid-cols-2">
+            <img src="${images[0].src}" alt="${images[0].alt}" class="h-80 w-full rounded-2xl object-cover" />
+            <img src="${images[1].src}" alt="${images[1].alt}" class="h-80 w-full rounded-2xl object-cover" />
+          </div>`;
+      }
+
+      const [a, b, c] = images;
+      return `
+        <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
+          <img src="${a.src}" alt="${a.alt}" class="h-72 w-full rounded-2xl object-cover md:col-span-2 md:row-span-2 md:h-full" />
+          <img src="${b.src}" alt="${b.alt}" class="h-36 w-full rounded-2xl object-cover md:h-full" />
+          <img src="${c.src}" alt="${c.alt}" class="h-36 w-full rounded-2xl object-cover md:h-full" />
+        </div>`;
+    }
+
+    function renderProject(project) {
+      const hasImages = (project.images || []).length > 0;
+      const cardClass = hasImages
+        ? 'overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2'
+        : 'rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft';
+
+      const contentClass = hasImages ? 'grid gap-0 lg:grid-cols-2' : 'grid gap-0';
+      const textClass = hasImages ? 'p-8' : '';
+
+      return `
+        <article class="${cardClass}">
+          <div class="${contentClass}">
+            ${hasImages ? renderMedia(project.images) : ''}
+            <div class="${textClass}">
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">${project.type}</p>
+              <h3 class="mt-3 text-2xl font-bold">${project.title}</h3>
+              <p class="mt-4 leading-7 text-slate-600">${project.description}</p>
+
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-slate-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">${project.meta1Title}</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta1Body}</div>
+                </div>
+                <div class="rounded-2xl bg-blue-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">${project.meta2Title}</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">${project.meta2Body}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    document.getElementById('projects-grid').innerHTML = projects.map(renderProject).join('');
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanay Agrawal — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Tanay Agrawal — wireless communications, signal processing, and RF research." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: '0 20px 50px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl"></div>
+    <div class="absolute top-80 right-0 h-72 w-72 rounded-full bg-cyan-200/30 blur-3xl"></div>
+  </div>
+
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
+    <a href="#top" class="text-lg font-black tracking-[0.25em] text-slate-900">TA</a>
+
+    <div class="hidden items-center gap-8 md:flex text-sm font-medium text-slate-600">
+      <a href="#about" class="hover:text-slate-900 transition">About</a>
+      <a href="#projects" class="hover:text-slate-900 transition">Projects</a>
+      <a href="#research" class="hover:text-slate-900 transition">Research</a>
+      <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
+    </div>
+
+    <a href="mailto:tanayagr@usc.edu" class="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-800">
+      Contact
+    </a>
+  </nav>
+
+  <main id="top" class="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+    <section class="grid items-center gap-12 py-12 md:grid-cols-2 md:py-20">
+      <div>
+        <p class="mb-4 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
+          Wireless Communications • RF Systems • Signal Processing
+        </p>
+        <h1 class="max-w-3xl text-5xl font-black tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+          I build systems that turn signals into insight.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, OTFS channel estimation, underwater communications, and multi-mode fiber modeling.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#projects" class="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-blue-700">
+            See projects
+          </a>
+          <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:border-slate-400">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-slate-950 p-5 text-white">
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-400">Current</div>
+            <div class="mt-3 text-lg font-semibold">USC WiDeS Group</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">
+              Research on mmWave sounding and wideband channel characterization under Prof. Andreas Molisch.
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-blue-50 p-5">
+            <div class="text-xs uppercase tracking-[0.25em] text-blue-700">Focus</div>
+            <div class="mt-3 text-lg font-semibold text-slate-950">RF + DSP + Optical Systems</div>
+            <div class="mt-2 text-sm leading-6 text-slate-600">
+              Designing hardware-aware algorithms for communication and sensing systems.
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-cyan-50 p-5 sm:col-span-2">
+            <div class="text-xs uppercase tracking-[0.25em] text-cyan-700">Toolkit</div>
+            <div class="mt-3 text-sm leading-7 text-slate-700">
+              MATLAB, Python, C/C++, Verilog, GNU Radio, LTSpice, Keysight ADS, CST Studio Suite, STM32 firmware, VNA, anechoic chamber, oscilloscopes, phased arrays, GPSDO.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-6 md:py-10">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:col-span-2">
+          <h2 class="text-2xl font-bold tracking-tight">About</h2>
+          <p class="mt-4 max-w-3xl text-slate-600 leading-8">
+            I am interested in the intersection of wireless communications, signal processing, and hardware systems. My recent work includes distributed mmWave channel sounding, pilot-coded OTFS channel estimation, underwater communications, and linear channel modeling for multi-mode fibers.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-slate-950 p-8 text-white shadow-soft">
+          <h2 class="text-2xl font-bold tracking-tight">Education</h2>
+          <div class="mt-5 space-y-4 text-sm leading-6 text-slate-300">
+            <div>
+              <div class="font-semibold text-white">University of Southern California</div>
+              <div>M.S. Electrical Engineering, 2025–2027</div>
+            </div>
+            <div>
+              <div class="font-semibold text-white">BITS Pilani, Goa</div>
+              <div>B.E. Electronics & Communication Engineering, GPA 8.32/10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-16">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight">Featured projects</h2>
+          <p class="mt-2 text-slate-600">A few representative research and engineering efforts.</p>
+        </div>
+      </div>
+
+      <div id="projects-grid" class="mt-8 grid gap-6 lg:grid-cols-2"></div>
+    </section>
+
+    <section id="research" class="py-10">
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <h2 class="text-2xl font-bold tracking-tight">Research highlights</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl bg-slate-50 p-6">
+            <h3 class="font-semibold">Publications</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              IEEE CCNC 2026 and APWiMob 2025 work on delay-Doppler estimation and OTFS underwater communications.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-slate-50 p-6">
+            <h3 class="font-semibold">Instrumentation</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Hands-on experience with VNA, AWG, signal analyzers, phased arrays, and anechoic chamber calibration.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-slate-50 p-6">
+            <h3 class="font-semibold">Implementation</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Firmware, MATLAB simulations, and full-stack system integration from theory to hardware validation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-16">
+      <div class="rounded-3xl bg-slate-950 px-8 py-12 text-white shadow-soft md:px-12">
+        <div class="grid gap-8 md:grid-cols-[1.4fr,0.6fr] md:items-end">
+          <div>
+            <h2 class="text-3xl font-bold tracking-tight">Let’s connect</h2>
+            <p class="mt-4 max-w-2xl text-slate-300 leading-7">
+              Open to conversations about wireless research, RF systems, signal processing, and technically challenging projects.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 md:items-end">
+            <a href="mailto:tanayagr@usc.edu" class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5">
+              tanayagr@usc.edu
+            </a>
+            <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">
+              LinkedIn profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
+    Built with Tailwind CSS • Designed for GitHub Pages
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        type: 'Research + Hardware',
+        title: 'Outdoor mmWave channel sounding at 28 GHz',
+        description: 'Built and deployed a coherent distributed MIMO channel sounder integrating GPSDO-disciplined synchronization, IF-over-fiber interconnects, phased-array systems, and outdoor receiver/transmitter carts for urban 28 GHz propagation measurements.',
+        images: [
+          { src: 'IMG_1731.JPG', alt: 'Indoor mmWave receiver cart setup' },
+          { src: 'IMG_1623_jpeg.jpg', alt: 'Outdoor distributed channel sounding setup' },
+          { src: 'IMG_1729.jpeg', alt: 'Outdoor mmWave sounding carts' }
+        ],
+        meta1Title: 'Hardware stack',
+        meta1Body: 'GPS clocks, phased arrays, IF-over-fiber links, battery-powered mobile carts, RF synchronization, outdoor measurement rigs.',
+        meta2Title: 'Research focus',
+        meta2Body: 'Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.'
       },
       {
         type: 'Communications',
-        title: 'OTFS channel estimation and pilot design',
-        description: 'Implemented a full OTFS transceiver chain and proposed coded pilot schemes that improved BER and reduced PAPR in NTN-style channels.',
-        images: [],
+        title: 'Pilot-coded OTFS channel estimation',
+        description: 'Implemented embedded pilot code-aided delay-Doppler estimation for OTFS and extended the idea to MIMO using code sets with strong correlation properties.',
+        images: [
+          { src: 'MIMO Channel_P3Correlation (1).png', alt: 'P3 code correlation outputs for MIMO channel estimation' },
+          { src: 'PAPR (1).png', alt: 'PAPR CCDF comparison for pilot schemes' },
+          { src: 'Figure_1 (1).png', alt: 'Delay-Doppler pilot arrangement and channel estimation visuals' }
+        ],
         meta1Title: 'Key result',
-        meta1Body: '5 dB BER improvement at BER = 10^-3 over the baseline and a 6 dB PAPR reduction.',
-        meta2Title: 'Platform',
-        meta2Body: 'MATLAB OTFS transceiver, MPA detector, LMS/MMSE estimation, and coded pilot design.'
+        meta1Body: 'Reduced PAPR while preserving accurate channel estimation and BER performance compared to a single-symbol pilot.',
+        meta2Title: 'Paper outcome',
+        meta2Body: 'IEEE CCNC 2026 publication on embedded pilot code-aided delay-Doppler channel estimation.'
+      },
+      {
+        type: 'Signal Processing',
+        title: 'Underwater acoustic communications and channel scenario analysis',
+        description: 'Built and compared OTFS-based underwater channel models and detector performance across time-delay and delay-Doppler scenarios.',
+        images: [
+          { src: 'Medium depth delay-time 2 (1).png', alt: 'Underwater delay-time channel visualization' },
+          { src: 'Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png', alt: 'Underwater delay-Doppler channel visualization' },
+          { src: 'Medium-deep N=16 M=64 16Q.png', alt: 'Underwater BER comparison across detectors' }
+        ],
+        meta1Title: 'Channel scenario',
+        meta1Body: 'Medium-depth underwater channel visualizations in both time-delay and delay-Doppler domains.',
+        meta2Title: 'Performance view',
+        meta2Body: 'Detector comparison across MRC, MPA, time-domain LMMSE, OFDM LMMSE, and OFDM ZF.'
       },
       {
         type: 'Optical Systems',
