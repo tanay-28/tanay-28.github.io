@@ -29,14 +29,12 @@
 
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
     <a href="#top" class="text-lg font-black tracking-[0.25em] text-slate-900">TA</a>
-
     <div class="hidden items-center gap-8 md:flex text-sm font-medium text-slate-600">
       <a href="#about" class="hover:text-slate-900 transition">About</a>
       <a href="#projects" class="hover:text-slate-900 transition">Projects</a>
       <a href="#research" class="hover:text-slate-900 transition">Research</a>
       <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
     </div>
-
     <a href="mailto:tanayagr@usc.edu" class="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-800">
       Contact
     </a>
@@ -52,7 +50,7 @@
           I build systems that turn signals into insight.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, OTFS channel estimation, underwater communications, and multi-mode fiber modeling.
+          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, MPC extraction, OTFS channel estimation, underwater communications, and multi-mode fiber modeling.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
           <a href="#projects" class="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-blue-700">
@@ -73,7 +71,6 @@
               Research on mmWave sounding and wideband channel characterization under Prof. Andreas Molisch.
             </div>
           </div>
-
           <div class="rounded-2xl bg-blue-50 p-5">
             <div class="text-xs uppercase tracking-[0.25em] text-blue-700">Focus</div>
             <div class="mt-3 text-lg font-semibold text-slate-950">RF + DSP + Optical Systems</div>
@@ -81,7 +78,6 @@
               Designing hardware-aware algorithms for communication and sensing systems.
             </div>
           </div>
-
           <div class="rounded-2xl bg-cyan-50 p-5 sm:col-span-2">
             <div class="text-xs uppercase tracking-[0.25em] text-cyan-700">Toolkit</div>
             <div class="mt-3 text-sm leading-7 text-slate-700">
@@ -100,7 +96,6 @@
             I am interested in the intersection of wireless communications, signal processing, and hardware systems. My recent work includes distributed mmWave channel sounding, pilot-coded OTFS channel estimation, underwater communications, and linear channel modeling for multi-mode fibers.
           </p>
         </div>
-
         <div class="rounded-3xl border border-slate-200 bg-slate-950 p-8 text-white shadow-soft">
           <h2 class="text-2xl font-bold tracking-tight">Education</h2>
           <div class="mt-5 space-y-4 text-sm leading-6 text-slate-300">
@@ -168,14 +163,52 @@
         <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
           <div class="grid gap-0 lg:grid-cols-2">
             <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="MIMO%20Channel_P3Correlation%20(1).png" data-alt="P3 code correlation outputs for MIMO channel estimation">
-                <img src="MIMO%20Channel_P3Correlation%20(1).png" alt="P3 code correlation outputs for MIMO channel estimation" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="MPC_Trajectory_Map.png" data-alt="Unified master trajectory map for MPC clustering">
+                <img src="MPC_Trajectory_Map.png" alt="Unified master trajectory map for MPC clustering" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
-              <button class="image-open block focus:outline-none" data-src="PAPR%20(1).png" data-alt="PAPR CCDF comparison for pilot schemes">
-                <img src="PAPR%20(1).png" alt="PAPR CCDF comparison for pilot schemes" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none" data-src="MPC_Single_Slice.png" data-alt="Single PDP slice for MPC extraction">
+                <img src="MPC_Single_Slice.png" alt="Single PDP slice for MPC extraction" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
-              <button class="image-open block focus:outline-none" data-src="Figure_1%20(1).png" data-alt="Delay-Doppler pilot arrangement and channel estimation visuals">
-                <img src="Figure_1%20(1).png" alt="Delay-Doppler pilot arrangement and channel estimation visuals" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none" data-src="MPC_Path_Gain.png" data-alt="Path gain heatmap for MPC extraction">
+                <img src="MPC_Path_Gain.png" alt="Path gain heatmap for MPC extraction" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              </button>
+            </div>
+
+            <div class="p-8">
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Signal Processing</p>
+              <h3 class="mt-3 text-2xl font-bold">Wideband PDP multipath component extraction</h3>
+              <p class="mt-4 leading-7 text-slate-600">
+                Designed a custom multi-stage MPC extraction pipeline in MATLAB for wideband PDP channel data without angular information, treating the delay-power profile as a 2D image for robust peak detection followed by DBSCAN clustering with geometric target organization.
+              </p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-slate-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">Pipeline</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">
+                    Peak detection, stitched trajectory tracking, and DBSCAN clustering of delay-power paths.
+                  </div>
+                </div>
+                <div class="rounded-2xl bg-blue-50 p-4">
+                  <div class="text-sm font-semibold text-slate-900">Output</div>
+                  <div class="mt-2 text-sm leading-6 text-slate-600">
+                    Per-MPC delay profiles recovered via constrained least squares with differential matrix formulation.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
+          <div class="grid gap-0 lg:grid-cols-2">
+            <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
+              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="MIMO Channel_P3Correlation (1).png" data-alt="P3 code correlation outputs for MIMO channel estimation">
+                <img src="MIMO Channel_P3Correlation (1).png" alt="P3 code correlation outputs for MIMO channel estimation" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              </button>
+              <button class="image-open block focus:outline-none" data-src="PAPR (1).png" data-alt="PAPR CCDF comparison for pilot schemes">
+                <img src="PAPR (1).png" alt="PAPR CCDF comparison for pilot schemes" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              </button>
+              <button class="image-open block focus:outline-none" data-src="Figure_1 (1).png" data-alt="Delay-Doppler pilot arrangement and channel estimation visuals">
+                <img src="Figure_1 (1).png" alt="Delay-Doppler pilot arrangement and channel estimation visuals" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
             </div>
 
@@ -206,14 +239,14 @@
         <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
           <div class="grid gap-0 lg:grid-cols-2">
             <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="Medium%20depth%20delay-time%202%20(1).png" data-alt="Underwater delay-time channel visualization">
-                <img src="Medium%20depth%20delay-time%202%20(1).png" alt="Underwater delay-time channel visualization" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="Medium depth delay-time 2 (1).png" data-alt="Underwater delay-time channel visualization">
+                <img src="Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel visualization" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
-              <button class="image-open block focus:outline-none" data-src="Medium%20depth%20h0=100%20ht0=40%20hr0=20%20d=1k%20delay-doppler%202%20(1).png" data-alt="Underwater delay-Doppler channel visualization">
-                <img src="Medium%20depth%20h0=100%20ht0=40%20hr0=20%20d=1k%20delay-doppler%202%20(1).png" alt="Underwater delay-Doppler channel visualization" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none" data-src="Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" data-alt="Underwater delay-Doppler channel visualization">
+                <img src="Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Underwater delay-Doppler channel visualization" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
-              <button class="image-open block focus:outline-none" data-src="Medium-deep%20N=16%20M=64%2016Q.png" data-alt="Underwater BER comparison across detectors">
-                <img src="Medium-deep%20N=16%20M=64%2016Q.png" alt="Underwater BER comparison across detectors" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
+              <button class="image-open block focus:outline-none" data-src="Medium-deep N=16 M=64 16Q.png" data-alt="Underwater BER comparison across detectors">
+                <img src="Medium-deep N=16 M=64 16Q.png" alt="Underwater BER comparison across detectors" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
               </button>
             </div>
 
@@ -300,14 +333,12 @@
               IEEE CCNC 2026 and APWiMob 2025 work on delay-Doppler estimation and OTFS underwater communications.
             </p>
           </div>
-
           <div class="rounded-2xl bg-slate-50 p-6">
             <h3 class="font-semibold">Instrumentation</h3>
             <p class="mt-2 text-sm leading-6 text-slate-600">
               Hands-on experience with VNA, AWG, signal analyzers, phased arrays, and anechoic chamber calibration.
             </p>
           </div>
-
           <div class="rounded-2xl bg-slate-50 p-6">
             <h3 class="font-semibold">Implementation</h3>
             <p class="mt-2 text-sm leading-6 text-slate-600">
