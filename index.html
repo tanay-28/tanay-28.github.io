@@ -7,18 +7,18 @@
   <meta name="description" content="Tanay Agrawal — wireless communications researcher, RF systems engineer, USC WiDeS Group." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg-main:    #FFFFFF;
-      --bg-accent:  #587588;
+      --bg-slate:   #587588;
       --bg-dark:    #1A1412;
       --text-dark:  #1A1412;
       --text-light: #FFFFFF;
-      --text-muted: #707070;
-      --rule:       #E5E5E5;
+      --text-muted: #6E6A68;
+      --rule:       #E0DBDA;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,7 +29,7 @@
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -37,9 +37,9 @@
     .display {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-size: clamp(3rem, 7.5vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
       color: var(--text-dark);
       text-transform: uppercase;
     }
@@ -49,56 +49,57 @@
       font-style: italic;
       font-weight: 400;
       text-transform: lowercase;
+      letter-spacing: -0.01em;
     }
 
     .section-heading {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.2;
-      letter-spacing: 0.05em;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     .card-heading {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       line-height: 1.3;
       letter-spacing: 0.02em;
     }
 
     .eyebrow {
       font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--bg-slate);
     }
 
     .body-text {
       font-family: 'Inter', sans-serif;
       font-weight: 300;
-      font-size: 0.88rem;
-      line-height: 1.7;
+      font-size: 0.92rem;
+      line-height: 1.75;
       color: var(--text-dark);
     }
 
     .caption {
       font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    /* ── Layout ── */
+    /* ── Layout Elements ── */
     .container {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 0 2.5rem;
+      padding: 0 3rem;
     }
 
     hr.rule {
@@ -107,9 +108,9 @@
       margin: 0;
     }
 
-    /* ── Nav ── */
+    /* ── Navigation ── */
     nav {
-      padding: 2.5rem 0 2rem;
+      padding: 3rem 0 2.5rem;
       border-bottom: 1px solid var(--rule);
     }
 
@@ -123,8 +124,8 @@
     .nav-logo {
       font-family: 'Playfair Display', serif;
       font-weight: 500;
-      font-size: 1.05rem;
-      letter-spacing: 0.2em;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--text-dark);
       text-decoration: none;
@@ -132,222 +133,232 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 3rem;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.25s ease;
     }
 
     .nav-links a:hover { color: var(--text-dark); }
 
-    /* ── Hero ── */
+    /* ── Editorial Hero Block ── */
     .hero {
-      padding: 8rem 0 6rem;
+      padding: 7rem 0;
       border-bottom: 1px solid var(--rule);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 5rem;
-      align-items: end;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 6rem;
+      align-items: stretch;
     }
 
-    .hero-left { }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     .hero-right {
-      padding-bottom: 0.5rem;
+      background-color: var(--bg-slate);
+      color: var(--text-light);
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .hero-meta {
       display: flex;
       flex-direction: column;
-      gap: 1.75rem;
+      gap: 2rem;
     }
 
     .hero-meta-item {
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-meta-item:first-child {
+      border-top: none;
+      padding-top: 0;
     }
 
     .hero-meta-item .label {
       font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.6);
       margin-bottom: 0.5rem;
     }
 
     .hero-meta-item .value {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
       font-weight: 400;
-      color: var(--text-dark);
-      line-height: 1.5;
+      color: var(--text-light);
+      line-height: 1.4;
     }
 
     .hero-links {
       display: flex;
-      gap: 1.25rem;
-      margin-top: 3.5rem;
+      gap: 1rem;
+      margin-top: 4rem;
       flex-wrap: wrap;
     }
 
     .link-primary {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-light);
-      background: var(--text-dark);
-      padding: 0.85rem 2rem;
+      background: var(--bg-dark);
+      padding: 1rem 2.25rem;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.25s ease;
     }
 
-    .link-primary:hover { background: var(--bg-accent); }
+    .link-primary:hover { background: var(--bg-slate); }
 
     .link-ghost {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dark);
       border: 1px solid var(--text-dark);
-      padding: 0.85rem 2rem;
+      padding: 1rem 2.25rem;
       text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      transition: all 0.25s ease;
     }
 
     .link-ghost:hover { background: var(--text-dark); color: var(--text-light); }
 
-    /* ── Section wrapper ── */
-    section { padding: 6rem 0; border-bottom: 1px solid var(--rule); }
+    /* ── Sections ── */
+    section { padding: 7rem 0; border-bottom: 1px solid var(--rule); }
     section:last-of-type { border-bottom: none; }
 
     .section-header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--text-dark);
+      border-bottom: 2px solid var(--text-dark);
     }
 
-    /* ── Project cards ── */
+    /* ── Project Showcase Stack ── */
     .projects-stack {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .project-card {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 5rem;
       border-top: 1px solid var(--rule);
-      padding: 4rem 0;
+      padding: 5rem 0;
     }
 
     .project-card:last-child { border-bottom: 1px solid var(--rule); }
 
-    .project-images {
-      padding-right: 0;
-    }
-
     .project-images-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 1rem;
     }
-
-    .project-images-grid.single { grid-template-columns: 1fr; }
 
     .project-images-grid img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      filter: grayscale(1) contrast(1.05);
+      filter: grayscale(1) contrast(1.02);
       cursor: zoom-in;
-      transition: filter 0.4s;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .project-images-grid img:hover { filter: grayscale(0.2) contrast(1.02); }
+    .project-images-grid img:hover { filter: grayscale(0.1) contrast(1); }
 
     .project-images-grid .img-tall {
       grid-row: span 2;
       aspect-ratio: auto;
       height: 100%;
-      min-height: 200px;
     }
 
     .project-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-left: 0;
     }
 
-    .project-top { }
+    .project-top .card-heading { 
+      margin-top: 1rem; 
+      margin-bottom: 1.75rem; 
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
 
-    .project-top .eyebrow { margin-bottom: 1.25rem; }
-
-    .project-top .card-heading { margin-bottom: 1.5rem; text-transform: uppercase; }
-
-    .project-top .body-text { max-width: 44ch; }
+    .project-top .body-text { max-width: 46ch; color: #333; }
 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 2.5rem;
+      margin-top: 3rem;
     }
 
     .tag {
       font-size: 0.65rem;
-      letter-spacing: 0.1em;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-dark);
-      background: #F8F8F8;
+      background: #FDFDFD;
       border: 1px solid var(--rule);
-      padding: 0.35rem 0.85rem;
+      padding: 0.4rem 1rem;
     }
 
     .project-result {
-      margin-top: 3rem;
-      padding-top: 1.75rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
       border-top: 1px solid var(--rule);
     }
 
     .project-result .label {
       font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--bg-slate);
       margin-bottom: 0.5rem;
     }
 
     .project-result .value {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.6;
     }
 
-    /* ── Publications ── */
+    /* ── Editorial Publication Index ── */
     .pub-list { display: flex; flex-direction: column; }
 
     .pub-item {
       display: grid;
-      grid-template-columns: 4rem 1fr;
+      grid-template-columns: 5rem 1fr;
       gap: 2rem;
-      padding: 2.5rem 0;
+      padding: 3rem 0;
       border-bottom: 1px solid var(--rule);
       align-items: start;
     }
@@ -356,42 +367,43 @@
 
     .pub-index {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: var(--text-muted);
-      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--bg-slate);
+      font-style: italic;
     }
 
     .pub-body .pub-title {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       line-height: 1.4;
       color: var(--text-dark);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .pub-body .pub-meta {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
 
     .pub-body .pub-link {
       display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      margin-top: 1.25rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dark);
       text-decoration: none;
       border-bottom: 1px solid var(--text-dark);
-      padding-bottom: 0.2rem;
-      transition: opacity 0.2s;
+      padding-bottom: 0.25rem;
+      transition: opacity 0.2s ease;
     }
 
-    .pub-body .pub-link:hover { opacity: 0.6; }
+    .pub-body .pub-link:hover { opacity: 0.5; }
 
-    /* ── Skills ── */
+    /* ── Structural Skill Matrix ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -399,130 +411,143 @@
     }
 
     .skill-block {
-      padding: 2.5rem 2.5rem 2.5rem 0;
+      padding: 3rem 3rem 3rem 0;
       border-right: 1px solid var(--rule);
     }
 
     .skill-block:last-child { border-right: none; }
-    .skill-block:nth-child(n+4) { border-top: 1px solid var(--rule); }
 
-    .skill-block .eyebrow { margin-bottom: 1.5rem; color: var(--text-dark); font-weight: 600; }
+    .skill-block .eyebrow { 
+      margin-bottom: 2rem; 
+      color: var(--text-dark); 
+      border-bottom: 1px solid var(--text-dark);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
 
     .skill-block ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
     .skill-block ul li {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--text-dark);
-      font-weight: 300;
     }
 
-    /* ── Contact ── */
+    /* ── Monolithic Contact Block ── */
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 6rem;
+      align-items: start;
     }
 
     .contact-right {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .contact-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.5rem 0;
+      padding: 1.75rem 0;
       border-bottom: 1px solid var(--rule);
       text-decoration: none;
       color: var(--text-dark);
-      transition: opacity 0.2s;
+      transition: padding-left 0.3s ease, opacity 0.2s ease;
     }
 
     .contact-link:first-child { border-top: 1px solid var(--text-dark); }
 
-    .contact-link:hover { opacity: 0.6; }
+    .contact-link:hover {
+      padding-left: 0.5rem;
+      opacity: 0.7;
+    }
 
     .contact-link .cl-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      color: var(--bg-slate);
     }
 
     .contact-link .cl-value {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
-    .contact-link .cl-arrow { font-size: 0.85rem; color: var(--text-muted); }
+    .contact-link .cl-arrow { font-size: 0.9rem; color: var(--text-muted); }
 
     /* ── Footer ── */
     footer {
-      padding: 3rem 0;
+      padding: 4rem 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-top: 1px solid var(--rule);
     }
 
-    /* ── Lightbox ── */
+    /* ── Lightbox Overlay ── */
     #lightbox {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(26,20,18,0.98);
+      background: rgba(26, 20, 18, 0.98);
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 3rem;
     }
 
     #lightbox.open { display: flex; }
 
     #lightbox img {
-      max-height: 88vh;
-      max-width: 90vw;
+      max-height: 85vh;
+      max-width: 85vw;
       object-fit: contain;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
 
     #lightbox-close {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+      top: 2rem;
+      right: 2rem;
       background: none;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.2rem;
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: all 0.25s ease;
     }
 
-    #lightbox-close:hover { border-color: rgba(255,255,255,0.6); }
+    #lightbox-close:hover { border-color: var(--text-light); color: var(--text-light); }
 
-    /* ── Responsive ── */
+    /* ── Responsiveness ── */
+    @media (max-width: 992px) {
+      .hero-grid, .project-card, .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .hero-right { padding: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-block { border-right: none; border-bottom: 1px solid var(--rule); padding: 2.5rem 0; }
+      .skill-block:last-child { border-bottom: none; }
+    }
+    
     @media (max-width: 768px) {
       .container { padding: 0 1.5rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .project-card { grid-template-columns: 1fr; gap: 2rem; }
-      .project-images { padding-right: 0; margin-bottom: 2rem; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .skill-block { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 0; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="container">
       <div class="nav-inner">
@@ -536,17 +561,18 @@
     </div>
   </nav>
 
-  <section class="hero" style="padding-top:7rem;padding-bottom:6rem;border-bottom:1px solid var(--rule);">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-left">
-          <p class="eyebrow" style="margin-bottom:2.5rem;">M.S. Electrical Engineering · USC WiDeS</p>
+          <p class="eyebrow" style="margin-bottom: 2.5rem;">M.S. Electrical Engineering · USC WiDeS</p>
           <h1 class="display">
             Signals,<br>
             <span class="display-italic">systems,</span><br>
             hardware.
           </h1>
-          <p class="body-text" style="margin-top:3rem; max-width:46ch;">
+          <p class="body-text" style="margin-top: 3.5rem; max-width: 46ch;">
             I research wireless communications and build the RF hardware to test it —
             from DARPA-funded mmWave channel sounders to delay-Doppler channel estimation algorithms.
           </p>
@@ -565,7 +591,7 @@
             </div>
             <div class="hero-meta-item">
               <div class="label">Active project</div>
-              <div class="value">DARPA-funded 28 GHz coherent distributed MIMO channel sounder — RFSoC front end, sole engineer</div>
+              <div class="value">DARPA-funded 28 GHz coherent distributed MIMO channel sounder — RFSoC front end</div>
             </div>
             <div class="hero-meta-item">
               <div class="label">Education</div>
@@ -581,6 +607,7 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section id="projects">
     <div class="container">
       <div class="section-header">
@@ -590,19 +617,22 @@
 
       <div class="projects-stack">
 
+        <!-- Project 1 -->
         <div class="project-card">
           <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
-              <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Receiver cart" class="img-tall" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
-              <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor sounding" onclick="openLightbox(this.src, this.alt)" />
-              <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Transmitter cart" onclick="openLightbox(this.src, this.alt)" />
+            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+              <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Receiver cart" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor sounding" onclick="openLightbox(this.src, this.alt)" />
+                <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Transmitter cart" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+              </div>
             </div>
           </div>
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">DARPA · Hardware · RF Systems</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">Outdoor mmWave channel sounding at 28 GHz</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">Outdoor mmWave channel sounding at 28 GHz</h3>
+              <p class="body-text">
                 Sole engineer on a DARPA-funded coherent distributed MIMO channel sounder. Designed and integrated the complete measurement cart — ZCU670 RFSoC TX/RX front end, GPSDO timing reference, distribution amplifier, signal generator with differential clock, output BPF, RF power amplifier, and antenna front end. Deployed across three transmitter carts and a receiver cart for outdoor urban mmWave propagation measurements.
               </p>
               <div class="project-tags">
@@ -620,19 +650,22 @@
           </div>
         </div>
 
+        <!-- Project 2 -->
         <div class="project-card">
           <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
-              <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="MPC trajectory map" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
-              <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice" onclick="openLightbox(this.src, this.alt)" />
-              <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap" onclick="openLightbox(this.src, this.alt)" />
+            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+              <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="MPC trajectory map" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice" onclick="openLightbox(this.src, this.alt)" />
+                <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+              </div>
             </div>
           </div>
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">Signal Processing · MATLAB</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">Wideband PDP multipath component extraction</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">Wideband PDP multipath component extraction</h3>
+              <p class="body-text">
                 Designed a custom multi-stage MPC extraction pipeline for wideband PDP channel data without angular information. Treats the delay-power profile as a 2D image for robust peak detection, followed by DBSCAN clustering. Per-MPC delay profiles recovered via constrained least-squares with a differential matrix formulation.
               </p>
               <div class="project-tags">
@@ -649,19 +682,22 @@
           </div>
         </div>
 
+        <!-- Project 3 -->
         <div class="project-card">
           <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
-              <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 correlation output" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
-              <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison" onclick="openLightbox(this.src, this.alt)" />
-              <img src="Code-aided pilot images/Figure_1 (1).png" alt="DD grid pilot arrangement" onclick="openLightbox(this.src, this.alt)" />
+            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+              <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 correlation output" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison" onclick="openLightbox(this.src, this.alt)" />
+                <img src="Code-aided pilot images/Figure_1 (1).png" alt="DD grid pilot arrangement" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+              </div>
             </div>
           </div>
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">Communications · Published</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">Pilot-coded OTFS delay-Doppler channel estimation</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">Pilot-coded OTFS delay-Doppler channel estimation</h3>
+              <p class="body-text">
                 Proposed embedding a Barker code pilot sequence in the OTFS delay-Doppler transmit grid instead of a single amplified pilot symbol. Cross-correlation at the receiver achieves accurate tap detection without PAPR penalty — achieving ~6 dB PAPR reduction while matching ideal channel estimation BER performance.
               </p>
               <div class="project-tags">
@@ -679,19 +715,22 @@
           </div>
         </div>
 
+        <!-- Project 4 -->
         <div class="project-card">
           <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
-              <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
-              <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Delay-Doppler channel" onclick="openLightbox(this.src, this.alt)" />
-              <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="BER comparison" onclick="openLightbox(this.src, this.alt)" />
+            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+              <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Delay-Doppler channel" onclick="openLightbox(this.src, this.alt)" />
+                <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="BER comparison" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+              </div>
             </div>
           </div>
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">Communications · Published</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">OTFS for underwater acoustic communications</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">OTFS for underwater acoustic communications</h3>
+              <p class="body-text">
                 Developed an OTFS-based underwater acoustic communication system in MATLAB. Modeled medium-depth channel scenarios in both delay-time and delay-Doppler domains. Achieved BER = 10⁻³ at 25 dB SNR for a 10 kHz acoustic signal at 100 m depth using an MPA detector.
               </p>
               <div class="project-tags">
@@ -708,6 +747,7 @@
           </div>
         </div>
 
+        <!-- Project 5 -->
         <div class="project-card">
           <div class="project-images">
             <div class="project-images-grid">
@@ -718,8 +758,8 @@
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">Machine Learning · RF</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">Drone RF signal classification</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">Drone RF signal classification</h3>
+              <p class="body-text">
                 Engineered an 89-feature IQ signal extraction pipeline — spectral entropy, PAPR, kurtosis, band-energy ratios, temporal burst statistics — from 17,000+ raw RF captures across seven drone and noise classes. Hierarchical SVM and MLP ensemble achieved 66.9% balanced accuracy across −12 to +30 dB SNR. SNR-stratified analysis identified scalar feature information loss as the performance bottleneck, motivating a CNN extension.
               </p>
               <div class="project-tags">
@@ -737,9 +777,10 @@
           </div>
         </div>
 
+        <!-- Project 6 -->
         <div class="project-card">
           <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns:1fr 1fr; grid-template-rows: 1fr 1fr;">
+            <div class="project-images-grid" style="grid-template-columns: 1fr 1fr;">
               <img src="MMF images/MMF_Transmission_Amplitude.png" alt="Transmission matrix amplitude" onclick="openLightbox(this.src, this.alt)" />
               <img src="MMF images/MMF_Transmission_Phase.png" alt="Transmission matrix phase" onclick="openLightbox(this.src, this.alt)" />
               <img src="MMF images/MMF_Capacity_vs_D.png" alt="Capacity vs modes" onclick="openLightbox(this.src, this.alt)" />
@@ -749,8 +790,8 @@
           <div class="project-content">
             <div class="project-top">
               <p class="eyebrow">Optical Systems · TU Munich</p>
-              <h3 class="card-heading" style="margin-top:0.75rem;">Linear channel modeling for multi-mode fibers</h3>
-              <p class="body-text" style="margin-top:1.25rem;">
+              <h3 class="card-heading">Linear channel modeling for multi-mode fibers</h3>
+              <p class="body-text">
                 Bachelor's thesis at TU Munich under Prof. Norbert Hanik. Modeled the MMF channel using a multi-section matrix propagation framework in the strong coupling regime. Analyzed modal dispersion and mode-dependent losses. Implemented ZF and LMMSE equalizers and computed MMSE achievable information rates across fiber parameter configurations via Monte Carlo simulation.
               </p>
               <div class="project-tags">
@@ -772,6 +813,7 @@
     </div>
   </section>
 
+  <!-- PUBLICATIONS -->
   <section id="publications">
     <div class="container">
       <div class="section-header">
@@ -810,6 +852,7 @@
     </div>
   </section>
 
+  <!-- SKILLS -->
   <section id="skills">
     <div class="container">
       <div class="section-header">
@@ -856,13 +899,14 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
       <div class="contact-grid">
         <div>
-          <p class="eyebrow" style="margin-bottom:1.5rem;">Get in touch</p>
+          <p class="eyebrow" style="margin-bottom: 1.5rem;">Get in touch</p>
           <h2 class="section-heading">Open to research conversations and <span class="display-italic">technically challenging</span> problems.</h2>
-          <p class="body-text" style="margin-top:1.5rem;">
+          <p class="body-text" style="margin-top: 2rem;">
             Particularly interested in wireless physical layer, RF systems, and ML-for-communications roles and collaborations.
           </p>
         </div>
@@ -882,9 +926,9 @@
             <span class="cl-value">tanay-28</span>
             <span class="cl-arrow">↗</span>
           </a>
-          <a href="https://scholar.google.com" target="_blank" rel="noreferrer" class="contact-link">
-            <span class="cl-label">Google Scholar</span>
-            <span class="cl-value">Tanay Agrawal</span>
+          <a href="#" target="_blank" rel="noreferrer" class="contact-link">
+            <span class="cl-label">Scholar</span>
+            <span class="cl-value">Google Scholar</span>
             <span class="cl-arrow">↗</span>
           </a>
         </div>
@@ -892,15 +936,15 @@
     </div>
   </section>
 
-  <div style="border-top:1px solid var(--rule);">
-    <div class="container">
-      <footer>
-        <span class="caption">Tanay Agrawal · USC WiDeS · Los Angeles</span>
-        <span class="caption">2025–2027</span>
-      </footer>
-    </div>
+  <!-- FOOTER -->
+  <div class="container">
+    <footer>
+      <span class="caption">Tanay Agrawal · USC WiDeS · Los Angeles</span>
+      <span class="caption">2026</span>
+    </footer>
   </div>
 
+  <!-- LIGHTBOX CONTAINER -->
   <div id="lightbox">
     <button id="lightbox-close" onclick="closeLightbox()">Close</button>
     <img id="lightbox-img" src="" alt="" />
