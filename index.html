@@ -265,16 +265,21 @@
     }
 
     .project-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
       border-top: 1px solid var(--rule);
+      width: 100%;
     }
 
     .project-card:last-child { border-bottom: 1px solid var(--rule); }
 
+    .project-grid-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      width: 100%;
+    }
+
     .project-images {
-      padding: 5rem 3rem 5rem 0;
+      padding: 5rem 0;
     }
 
     .project-images-grid {
@@ -305,30 +310,24 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 5rem 0 5rem 3rem;
+      padding: 5rem 0 5rem 5rem;
       border-left: 1px solid var(--rule);
     }
 
-    /* Colored Variant for Art Direction Contrast */
+    /* Colored Variant Style Correction */
     .project-card.accented-variant {
-      background-color: #F4F6F7; /* Subtle light tint container */
+      background-color: var(--bg-slate);
     }
     
-    .project-card.accented-variant .project-images {
-      padding: 5rem 3rem;
-    }
-
     .project-card.accented-variant .project-content {
-      background-color: var(--bg-slate);
       color: var(--text-light);
-      padding: 5rem 4rem;
-      border-left: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .project-card.accented-variant .project-content .eyebrow { color: rgba(255, 255, 255, 0.7); }
+    .project-card.accented-variant .project-content .eyebrow { color: rgba(255, 255, 255, 0.75); }
     .project-card.accented-variant .project-content .card-heading { color: var(--text-light); }
     .project-card.accented-variant .project-content .body-text { color: rgba(255, 255, 255, 0.9); }
-    .project-card.accented-variant .project-content .tag { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-light); }
+    .project-card.accented-variant .project-content .tag { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-light); }
     .project-card.accented-variant .project-content .project-result { border-top: 1px solid rgba(255, 255, 255, 0.2); }
     .project-card.accented-variant .project-content .project-result .label { color: rgba(255, 255, 255, 0.7); }
     .project-card.accented-variant .project-content .project-result .value { color: var(--text-light); }
@@ -561,13 +560,12 @@
 
     /* ── Responsiveness ── */
     @media (max-width: 992px) {
-      .hero-grid, .project-card { grid-template-columns: 1fr; gap: 0; }
+      .hero-grid, .project-grid-inner { grid-template-columns: 1fr; gap: 0; }
       .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
       .hero-right { padding: 3rem; }
       .project-images { padding: 3rem 0; }
       .project-content { padding: 3rem 0; border-left: none; }
-      .project-card.accented-variant .project-images { padding: 3rem 0; }
-      .project-card.accented-variant .project-content { padding: 3rem 1.5rem; }
+      .project-card.accented-variant .project-content { border-left: none; }
       .skills-grid { grid-template-columns: 1fr; }
       .skill-block { border-right: none; border-bottom: 1px solid var(--rule); padding: 2.5rem 0; }
       .skill-block:last-child { border-bottom: none; }
@@ -654,34 +652,36 @@
 
       <!-- Project 1 (Clean Minimal Variant) -->
       <div class="project-card">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%;">
-          <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
-              <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Receiver cart" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor sounding" onclick="openLightbox(this.src, this.alt)" />
-                <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Transmitter cart" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+                <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Receiver cart" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor sounding" onclick="openLightbox(this.src, this.alt)" />
+                  <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Transmitter cart" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">DARPA · Hardware · RF Systems</p>
-              <h3 class="card-heading">Outdoor mmWave channel sounding at 28 GHz</h3>
-              <p class="body-text" style="color: #333;">
-                Sole engineer on a DARPA-funded coherent distributed MIMO channel sounder. Designed and integrated the complete measurement cart — ZCU670 RFSoC TX/RX front end, GPSDO timing reference, distribution amplifier, signal generator with differential clock, output BPF, RF power amplifier, and antenna front end. Deployed across three transmitter carts and a receiver cart for outdoor urban mmWave propagation measurements.
-              </p>
-              <div class="project-tags">
-                <span class="tag">ZCU670 RFSoC</span>
-                <span class="tag">Simulink + Vivado</span>
-                <span class="tag">GPSDO</span>
-                <span class="tag">IF-over-fiber</span>
-                <span class="tag">28 GHz</span>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">DARPA · Hardware · RF Systems</p>
+                <h3 class="card-heading">Outdoor mmWave channel sounding at 28 GHz</h3>
+                <p class="body-text" style="color: #333;">
+                  Sole engineer on a DARPA-funded coherent distributed MIMO channel sounder. Designed and integrated the complete measurement cart — ZCU670 RFSoC TX/RX front end, GPSDO timing reference, distribution amplifier, signal generator with differential clock, output BPF, RF power amplifier, and antenna front end. Deployed across three transmitter carts and a receiver cart for outdoor urban mmWave propagation measurements.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">ZCU670 RFSoC</span>
+                  <span class="tag">Simulink + Vivado</span>
+                  <span class="tag">GPSDO</span>
+                  <span class="tag">IF-over-fiber</span>
+                  <span class="tag">28 GHz</span>
+                </div>
               </div>
-            </div>
-            <div class="project-result">
-              <div class="label">Outcome</div>
-              <div class="value">Outdoor urban mmWave measurement campaign complete. Journal paper in preparation.</div>
+              <div class="project-result">
+                <div class="label">Outcome</div>
+                <div class="value">Outdoor urban mmWave measurement campaign complete. Journal paper in preparation.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -689,33 +689,35 @@
 
       <!-- Project 2 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%; max-width: 100%; padding: 0;">
-          <div class="project-images" style="padding-left: 3rem;">
-            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
-              <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="MPC trajectory map" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice" onclick="openLightbox(this.src, this.alt)" />
-                <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+                <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="MPC trajectory map" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice" onclick="openLightbox(this.src, this.alt)" />
+                  <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">Signal Processing · MATLAB</p>
-              <h3 class="card-heading">Wideband PDP multipath component extraction</h3>
-              <p class="body-text">
-                Designed a custom multi-stage MPC extraction pipeline for wideband PDP channel data without angular information. Treats the delay-power profile as a 2D image for robust peak detection, followed by DBSCAN clustering. Per-MPC delay profiles recovered via constrained least-squares with a differential matrix formulation.
-              </p>
-              <div class="project-tags">
-                <span class="tag">MATLAB</span>
-                <span class="tag">DBSCAN</span>
-                <span class="tag">Least squares</span>
-                <span class="tag">3–4 GHz</span>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">Signal Processing · MATLAB</p>
+                <h3 class="card-heading">Wideband PDP multipath component extraction</h3>
+                <p class="body-text">
+                  Designed a custom multi-stage MPC extraction pipeline for wideband PDP channel data without angular information. Treats the delay-power profile as a 2D image for robust peak detection, followed by DBSCAN clustering. Per-MPC delay profiles recovered via constrained least-squares with a differential matrix formulation.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">DBSCAN</span>
+                  <span class="tag">Least squares</span>
+                  <span class="tag">3–4 GHz</span>
+                </div>
               </div>
-            </div>
-            <div class="project-result">
-              <div class="label">Outcome</div>
-              <div class="value">Enabling cell-free massive MIMO channel path correlation analysis from scalar PDP data alone.</div>
+              <div class="project-result">
+                <div class="label">Outcome</div>
+                <div class="value">Enabling cell-free massive MIMO channel path correlation analysis from scalar PDP data alone.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -723,34 +725,36 @@
 
       <!-- Project 3 (Clean Minimal Variant) -->
       <div class="project-card">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%;">
-          <div class="project-images">
-            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
-              <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 correlation output" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison" onclick="openLightbox(this.src, this.alt)" />
-                <img src="Code-aided pilot images/Figure_1 (1).png" alt="DD grid pilot arrangement" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+                <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 correlation output" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison" onclick="openLightbox(this.src, this.alt)" />
+                  <img src="Code-aided pilot images/Figure_1 (1).png" alt="DD grid pilot arrangement" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">Communications · Published</p>
-              <h3 class="card-heading">Pilot-coded OTFS delay-Doppler channel estimation</h3>
-              <p class="body-text" style="color: #333;">
-                Proposed embedding a Barker code pilot sequence in the OTFS delay-Doppler transmit grid instead of a single amplified pilot symbol. Cross-correlation at the receiver achieves accurate tap detection without PAPR penalty — achieving ~6 dB PAPR reduction while matching ideal channel estimation BER performance.
-              </p>
-              <div class="project-tags">
-                <span class="tag">OTFS</span>
-                <span class="tag">Channel estimation</span>
-                <span class="tag">Barker code</span>
-                <span class="tag">PAPR reduction</span>
-                <span class="tag">MATLAB</span>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">Communications · Published</p>
+                <h3 class="card-heading">Pilot-coded OTFS delay-Doppler channel estimation</h3>
+                <p class="body-text" style="color: #333;">
+                  Proposed embedding a Barker code pilot sequence in the OTFS delay-Doppler transmit grid instead of a single amplified pilot symbol. Cross-correlation at the receiver achieves accurate tap detection without PAPR penalty — achieving ~6 dB PAPR reduction while matching ideal channel estimation BER performance.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">OTFS</span>
+                  <span class="tag">Channel estimation</span>
+                  <span class="tag">Barker code</span>
+                  <span class="tag">PAPR reduction</span>
+                  <span class="tag">MATLAB</span>
+                </div>
               </div>
-            </div>
-            <div class="project-result">
-              <div class="label">Outcome</div>
-              <div class="value">Published — IEEE CCNC 2026, Las Vegas. DOI: 10.1109/CCNC65079.2026.11366337</div>
+              <div class="project-result">
+                <div class="label">Outcome</div>
+                <div class="value">Published — IEEE CCNC 2026, Las Vegas. DOI: 10.1109/CCNC65079.2026.11366337</div>
+              </div>
             </div>
           </div>
         </div>
@@ -758,33 +762,35 @@
 
       <!-- Project 4 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%; max-width: 100%; padding: 0;">
-          <div class="project-images" style="padding-left: 3rem;">
-            <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
-              <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Delay-Doppler channel" onclick="openLightbox(this.src, this.alt)" />
-                <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="BER comparison" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid" style="grid-template-columns: 1.8fr 1.2fr;">
+                <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel" class="img-tall" onclick="openLightbox(this.src, this.alt)" />
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Delay-Doppler channel" onclick="openLightbox(this.src, this.alt)" />
+                  <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="BER comparison" onclick="openLightbox(this.src, this.alt)" style="height: 100%; object-fit: cover;" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">Communications · Published</p>
-              <h3 class="card-heading">OTFS for underwater acoustic communications</h3>
-              <p class="body-text">
-                Developed an OTFS-based underwater acoustic communication system in MATLAB. Modeled medium-depth channel scenarios in both delay-time and delay-Doppler domains. Achieved BER = 10⁻³ at 25 dB SNR for a 10 kHz acoustic signal at 100 m depth using an MPA detector.
-              </p>
-              <div class="project-tags">
-                <span class="tag">OTFS</span>
-                <span class="tag">Underwater acoustics</span>
-                <span class="tag">MPA detector</span>
-                <span class="tag">MATLAB</span>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">Communications · Published</p>
+                <h3 class="card-heading">OTFS for underwater acoustic communications</h3>
+                <p class="body-text">
+                  Developed an OTFS-based underwater acoustic communication system in MATLAB. Modeled medium-depth channel scenarios in both delay-time and delay-Doppler domains. Achieved BER = 10⁻³ at 25 dB SNR for a 10 kHz acoustic signal at 100 m depth using an MPA detector.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">OTFS</span>
+                  <span class="tag">Underwater acoustics</span>
+                  <span class="tag">MPA detector</span>
+                  <span class="tag">MATLAB</span>
+                </div>
               </div>
-            </div>
-            <div class="project-result">
-              <div class="label">Outcome</div>
-              <div class="value">Published — APWiMob 2025.</div>
+              <div class="project-result">
+                <div class="label">Outcome</div>
+                <div class="value">Published — APWiMob 2025.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -792,31 +798,33 @@
 
       <!-- Project 5 (Clean Minimal Variant) -->
       <div class="project-card">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%;">
-          <div class="project-images">
-            <div class="project-images-grid">
-              <img src="Drone RF images/spectral_complezxity_fingerprint.png" alt="Spectral complexity fingerprint" onclick="openLightbox(this.src, this.alt)" />
-              <img src="Drone RF images/ensemble_confusion_matrix.jpeg" alt="Ensemble confusion matrix" onclick="openLightbox(this.src, this.alt)" />
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">Machine Learning · RF</p>
-              <h3 class="card-heading">Drone RF signal classification</h3>
-              <p class="body-text" style="color: #333;">
-                Engineered an 89-feature IQ signal extraction pipeline — spectral entropy, PAPR, kurtosis, band-energy ratios, temporal burst statistics — from 17,000+ raw RF captures across seven drone and noise classes. Hierarchical SVM and MLP ensemble achieved 66.9% balanced accuracy across −12 to +30 dB SNR. SNR-stratified analysis identified scalar feature information loss as the performance bottleneck, motivating a CNN extension.
-              </p>
-              <div class="project-tags">
-                <span class="tag">IQ signals</span>
-                <span class="tag">SVM</span>
-                <span class="tag">MLP</span>
-                <span class="tag">Feature engineering</span>
-                <span class="tag">Python</span>
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid">
+                <img src="Drone RF images/spectral_complezxity_fingerprint.png" alt="Spectral complexity fingerprint" onclick="openLightbox(this.src, this.alt)" />
+                <img src="Drone RF images/ensemble_confusion_matrix.jpeg" alt="Ensemble confusion matrix" onclick="openLightbox(this.src, this.alt)" />
               </div>
             </div>
-            <div class="project-result">
-              <div class="label">Next step</div>
-              <div class="value">CNN extension in PyTorch — replacing scalar feature pipeline with end-to-end deep learning on raw IQ.</div>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">Machine Learning · RF</p>
+                <h3 class="card-heading">Drone RF signal classification</h3>
+                <p class="body-text" style="color: #333;">
+                  Engineered an 89-feature IQ signal extraction pipeline — spectral entropy, PAPR, kurtosis, band-energy ratios, temporal burst statistics — from 17,000+ raw RF captures across seven drone and noise classes. Hierarchical SVM and MLP ensemble achieved 66.9% balanced accuracy across −12 to +30 dB SNR. SNR-stratified analysis identified scalar feature information loss as the performance bottleneck, motivating a CNN extension.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">IQ signals</span>
+                  <span class="tag">SVM</span>
+                  <span class="tag">MLP</span>
+                  <span class="tag">Feature engineering</span>
+                  <span class="tag">Python</span>
+                </div>
+              </div>
+              <div class="project-result">
+                <div class="label">Next step</div>
+                <div class="value">CNN extension in PyTorch — replacing scalar feature pipeline with end-to-end deep learning on raw IQ.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -824,33 +832,35 @@
 
       <!-- Project 6 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
-        <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit; width: 100%; max-width: 100%; padding: 0;">
-          <div class="project-images" style="padding-left: 3rem;">
-            <div class="project-images-grid" style="grid-template-columns: 1fr 1fr;">
-              <img src="MMF images/MMF_Transmission_Amplitude.png" alt="Transmission matrix amplitude" onclick="openLightbox(this.src, this.alt)" />
-              <img src="MMF images/MMF_Transmission_Phase.png" alt="Transmission matrix phase" onclick="openLightbox(this.src, this.alt)" />
-              <img src="MMF images/MMF_Capacity_vs_D.png" alt="Capacity vs modes" onclick="openLightbox(this.src, this.alt)" />
-              <img src="MMF images/MMF_Capacity_vs_Section_Length.png" alt="Capacity vs section length" onclick="openLightbox(this.src, this.alt)" />
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-top">
-              <p class="eyebrow">Optical Systems · TU Munich</p>
-              <h3 class="card-heading">Linear channel modeling for multi-mode fibers</h3>
-              <p class="body-text">
-                Bachelor's thesis at TU Munich under Prof. Norbert Hanik. Modeled the MMF channel using a multi-section matrix propagation framework in the strong coupling regime. Analyzed modal dispersion and mode-dependent losses. Implemented ZF and LMMSE equalizers and computed MMSE achievable information rates across fiber parameter configurations via Monte Carlo simulation.
-              </p>
-              <div class="project-tags">
-                <span class="tag">MMF</span>
-                <span class="tag">LMMSE</span>
-                <span class="tag">Mode coupling</span>
-                <span class="tag">MATLAB</span>
-                <span class="tag">MDM</span>
+        <div class="container">
+          <div class="project-grid-inner">
+            <div class="project-images">
+              <div class="project-images-grid" style="grid-template-columns: 1fr 1fr;">
+                <img src="MMF images/MMF_Transmission_Amplitude.png" alt="Transmission matrix amplitude" onclick="openLightbox(this.src, this.alt)" />
+                <img src="MMF images/MMF_Transmission_Phase.png" alt="Transmission matrix phase" onclick="openLightbox(this.src, this.alt)" />
+                <img src="MMF images/MMF_Capacity_vs_D.png" alt="Capacity vs modes" onclick="openLightbox(this.src, this.alt)" />
+                <img src="MMF images/MMF_Capacity_vs_Section_Length.png" alt="Capacity vs section length" onclick="openLightbox(this.src, this.alt)" />
               </div>
             </div>
-            <div class="project-result">
-              <div class="label">Outcome</div>
-              <div class="value">Undergraduate thesis, TU Munich Institute for Communications Engineering, Dec. 2024.</div>
+            <div class="project-content">
+              <div class="project-top">
+                <p class="eyebrow">Optical Systems · TU Munich</p>
+                <h3 class="card-heading">Linear channel modeling for multi-mode fibers</h3>
+                <p class="body-text">
+                  Bachelor's thesis at TU Munich under Prof. Norbert Hanik. Modeled the MMF channel using a multi-section matrix propagation framework in the strong coupling regime. Analyzed modal dispersion and mode-dependent losses. Implemented ZF and LMMSE equalizers and computed MMSE achievable information rates across fiber parameter configurations via Monte Carlo simulation.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">MMF</span>
+                  <span class="tag">LMMSE</span>
+                  <span class="tag">Mode coupling</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">MDM</span>
+                </div>
+              </div>
+              <div class="project-result">
+                <div class="label">Outcome</div>
+                <div class="value">Undergraduate thesis, TU Munich Institute for Communications Engineering, Dec. 2024.</div>
+              </div>
             </div>
           </div>
         </div>
