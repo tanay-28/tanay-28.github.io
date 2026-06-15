@@ -3,461 +3,939 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tanay Agrawal — Portfolio</title>
-  <meta name="description" content="Personal portfolio of Tanay Agrawal — wireless communications, signal processing, and RF research." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          boxShadow: {
-            soft: '0 20px 50px rgba(15, 23, 42, 0.08)'
-          }
-        }
-      }
-    }
-  </script>
+  <title>Tanay Agrawal</title>
+  <meta name="description" content="Tanay Agrawal — wireless communications researcher, RF systems engineer, USC WiDeS Group." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F5F2EC;
+      --parchment: #EDE8DF;
+      --ink:     #1A1814;
+      --ink-mid: #3D3A34;
+      --ink-faint:#8A8679;
+      --rule:    #C8C2B4;
+      --accent:  #7A6A52;
+      --white:   #FDFCFA;
+    }
+
     html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Typography ── */
+    .display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .display-italic {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    .card-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.25;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .body-text {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+    }
+
+    .caption {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-faint);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .hero-left { }
+
+    .hero-right {
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-meta-item {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-meta-item .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-meta-item .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .link-primary {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      padding: 0.75rem 1.75rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .link-primary:hover { background: var(--accent); }
+
+    .link-ghost {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      padding: 0.75rem 1.75rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .link-ghost:hover { border-color: var(--ink); }
+
+    /* ── Section wrapper ── */
+    section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Project cards ── */
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0;
+    }
+
+    .project-card:last-child { border-bottom: 1px solid var(--rule); }
+
+    .project-images {
+      padding-right: 3rem;
+    }
+
+    .project-images-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .project-images-grid.single { grid-template-columns: 1fr; }
+
+    .project-images-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85) contrast(1.02);
+      cursor: zoom-in;
+      transition: filter 0.3s;
+    }
+
+    .project-images-grid img:hover { filter: saturate(1) contrast(1.05); }
+
+    .project-images-grid .img-tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 200px;
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 0;
+    }
+
+    .project-top { }
+
+    .project-top .eyebrow { margin-bottom: 1rem; }
+
+    .project-top .card-heading { margin-bottom: 1.25rem; }
+
+    .project-top .body-text { max-width: 44ch; }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3rem 0.75rem;
+    }
+
+    .project-result {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-result .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-result .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ── Publications ── */
+    .pub-list { display: flex; flex-direction: column; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .pub-item:first-child { border-top: 1px solid var(--rule); }
+
+    .pub-index {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--rule);
+      font-weight: 300;
+      padding-top: 0.1rem;
+    }
+
+    .pub-body .pub-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .pub-body .pub-meta {
+      font-size: 0.75rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+    }
+
+    .pub-body .pub-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.1rem;
+      transition: border-color 0.2s;
+    }
+
+    .pub-body .pub-link:hover { border-color: var(--accent); }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .skill-block {
+      padding: 2rem 2rem 2rem 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .skill-block:last-child { border-right: none; }
+    .skill-block:nth-child(n+4) { border-top: 1px solid var(--rule); }
+
+    .skill-block .eyebrow { margin-bottom: 1rem; }
+
+    .skill-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .skill-block ul li {
+      font-size: 0.8rem;
+      color: var(--ink-mid);
+      font-weight: 300;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .contact-link:first-child { border-top: 1px solid var(--rule); }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-link .cl-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .contact-link .cl-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+
+    .contact-link .cl-arrow { font-size: 0.85rem; color: var(--rule); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(26,24,20,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-height: 88vh;
+      max-width: 90vw;
+      object-fit: contain;
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    #lightbox-close:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .container { padding: 0 1.5rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-images { padding-right: 0; margin-bottom: 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-block { border-right: none; border-bottom: 1px solid var(--rule); }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+    }
   </style>
 </head>
-<body class="bg-stone-50 text-slate-900 antialiased">
-  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-    <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl"></div>
-    <div class="absolute top-80 right-0 h-72 w-72 rounded-full bg-cyan-200/30 blur-3xl"></div>
-  </div>
+<body>
 
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
-    <a href="#top" class="text-lg font-black tracking-[0.25em] text-slate-900">TA</a>
-    <div class="hidden items-center gap-8 md:flex text-sm font-medium text-slate-600">
-      <a href="#about" class="hover:text-slate-900 transition">About</a>
-      <a href="#projects" class="hover:text-slate-900 transition">Projects</a>
-      <a href="#research" class="hover:text-slate-900 transition">Research</a>
-      <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">Tanay Agrawal</a>
+        <ul class="nav-links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <a href="mailto:tanayagr@usc.edu" class="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-800">
-      Contact
-    </a>
   </nav>
 
-  <main id="top" class="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
-    <section class="grid items-center gap-12 py-12 md:grid-cols-2 md:py-20">
-      <div>
-        <p class="mb-4 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
-          Wireless Communications • RF Systems • Signal Processing
-        </p>
-        <h1 class="max-w-3xl text-5xl font-black tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-          I build systems that turn signals into insight.
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          I’m Tanay Agrawal, an M.S. Electrical Engineering student at USC and a researcher in the WiDeS Group. My work spans mmWave channel sounding, MPC extraction, OTFS channel estimation, underwater communications, and multi-mode fiber modeling.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="#projects" class="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-blue-700">
-            See projects
-          </a>
-          <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:border-slate-400">
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div class="rounded-2xl bg-slate-950 p-5 text-white">
-            <div class="text-xs uppercase tracking-[0.25em] text-slate-400">Current</div>
-            <div class="mt-3 text-lg font-semibold">USC WiDeS Group</div>
-            <div class="mt-2 text-sm leading-6 text-slate-300">
-              Research on mmWave sounding and wideband channel characterization under Prof. Andreas Molisch.
-            </div>
-          </div>
-          <div class="rounded-2xl bg-blue-50 p-5">
-            <div class="text-xs uppercase tracking-[0.25em] text-blue-700">Focus</div>
-            <div class="mt-3 text-lg font-semibold text-slate-950">Wireless Fundamentals + Firmware + System Design</div>
-            <div class="mt-2 text-sm leading-6 text-slate-600">
-              Designing hardware-aware algorithms for communication and sensing systems.
-            </div>
-          </div>
-          <div class="rounded-2xl bg-cyan-50 p-5 sm:col-span-2">
-            <div class="text-xs uppercase tracking-[0.25em] text-cyan-700">Toolkit</div>
-            <div class="mt-3 text-sm leading-7 text-slate-700">
-              MATLAB, Python, C/C++, Verilog, GNU Radio, LTSpice, Keysight ADS, CST Studio Suite, STM32 firmware, VNA, anechoic chamber, oscilloscopes, phased arrays, GPSDO.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="py-6 md:py-10">
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:col-span-2">
-          <h2 class="text-2xl font-bold tracking-tight">About</h2>
-          <p class="mt-4 max-w-3xl text-slate-600 leading-8">
-            I am interested in the intersection of wireless communications, signal processing, and hardware systems. My recent work includes distributed mmWave channel sounding, pilot-coded OTFS channel estimation, underwater communications, and linear channel modeling for multi-mode fibers.
+  <!-- HERO -->
+  <section class="hero" style="padding-top:6rem;padding-bottom:5rem;border-bottom:1px solid var(--rule);">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="eyebrow" style="margin-bottom:2rem;">M.S. Electrical Engineering · USC WiDeS</p>
+          <h1 class="display">
+            Signals,<br>
+            <span class="display-italic">systems,</span><br>
+            hardware.
+          </h1>
+          <p class="body-text" style="margin-top:2.5rem; max-width:46ch;">
+            I research wireless communications and build the RF hardware to test it —
+            from DARPA-funded mmWave channel sounders to delay-Doppler channel estimation algorithms.
           </p>
+          <div class="hero-links">
+            <a href="#projects" class="link-primary">View work</a>
+            <a href="https://github.com/tanay-28" target="_blank" rel="noreferrer" class="link-ghost">GitHub</a>
+            <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="link-ghost">LinkedIn</a>
+          </div>
         </div>
-        <div class="rounded-3xl border border-slate-200 bg-slate-950 p-8 text-white shadow-soft">
-          <h2 class="text-2xl font-bold tracking-tight">Education</h2>
-          <div class="mt-5 space-y-4 text-sm leading-6 text-slate-300">
-            <div>
-              <div class="font-semibold text-white">University of Southern California</div>
-              <div>M.S. Electrical Engineering, 2025–2027</div>
+
+        <div class="hero-right">
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="label">Current position</div>
+              <div class="value">Research Assistant, WiDeS Group<br>under Prof. Andreas Molisch</div>
             </div>
-            <div>
-              <div class="font-semibold text-white">BITS Pilani, Goa</div>
-              <div>B.E. Electronics & Communication Engineering, GPA 8.32/10</div>
+            <div class="hero-meta-item">
+              <div class="label">Active project</div>
+              <div class="value">DARPA-funded 28 GHz coherent distributed MIMO channel sounder — RFSoC front end, sole engineer</div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="label">Education</div>
+              <div class="value">USC · M.S. EE, 2025–2027<br>BITS Pilani Goa · B.E. ECE, 2021–2025<br>Thesis: TU Munich</div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="label">Publications</div>
+              <div class="value">2 first-author IEEE papers<br>1 journal under review</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects" class="py-16">
-      <div class="flex items-end justify-between gap-6">
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-heading">Selected work</h2>
+        <span class="caption">2023 — present</span>
+      </div>
+
+      <div class="projects-stack">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
+              <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Receiver cart" class="img-tall" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
+              <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor sounding" onclick="openLightbox(this.src, this.alt)" />
+              <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Transmitter cart" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">DARPA · Hardware · RF Systems</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">Outdoor mmWave channel sounding at 28 GHz</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Sole engineer on a DARPA-funded coherent distributed MIMO channel sounder. Designed and integrated the complete measurement cart — ZCU670 RFSoC TX/RX front end, GPSDO timing reference, distribution amplifier, signal generator with differential clock, output BPF, RF power amplifier, and antenna front end. Deployed across three transmitter carts and a receiver cart for outdoor urban mmWave propagation measurements.
+              </p>
+              <div class="project-tags">
+                <span class="tag">ZCU670 RFSoC</span>
+                <span class="tag">Simulink + Vivado</span>
+                <span class="tag">GPSDO</span>
+                <span class="tag">IF-over-fiber</span>
+                <span class="tag">28 GHz</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Outcome</div>
+              <div class="value">Outdoor urban mmWave measurement campaign complete. Journal paper in preparation.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
+              <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="MPC trajectory map" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
+              <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice" onclick="openLightbox(this.src, this.alt)" />
+              <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">Signal Processing · MATLAB</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">Wideband PDP multipath component extraction</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Designed a custom multi-stage MPC extraction pipeline for wideband PDP channel data without angular information. Treats the delay-power profile as a 2D image for robust peak detection, followed by DBSCAN clustering. Per-MPC delay profiles recovered via constrained least-squares with a differential matrix formulation.
+              </p>
+              <div class="project-tags">
+                <span class="tag">MATLAB</span>
+                <span class="tag">DBSCAN</span>
+                <span class="tag">Least squares</span>
+                <span class="tag">3–4 GHz</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Outcome</div>
+              <div class="value">Enabling cell-free massive MIMO channel path correlation analysis from scalar PDP data alone.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
+              <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 correlation output" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
+              <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison" onclick="openLightbox(this.src, this.alt)" />
+              <img src="Code-aided pilot images/Figure_1 (1).png" alt="DD grid pilot arrangement" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">Communications · Published</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">Pilot-coded OTFS delay-Doppler channel estimation</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Proposed embedding a Barker code pilot sequence in the OTFS delay-Doppler transmit grid instead of a single amplified pilot symbol. Cross-correlation at the receiver achieves accurate tap detection without PAPR penalty — achieving ~6 dB PAPR reduction while matching ideal channel estimation BER performance.
+              </p>
+              <div class="project-tags">
+                <span class="tag">OTFS</span>
+                <span class="tag">Channel estimation</span>
+                <span class="tag">Barker code</span>
+                <span class="tag">PAPR reduction</span>
+                <span class="tag">MATLAB</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Outcome</div>
+              <div class="value">Published — IEEE CCNC 2026, Las Vegas. DOI: 10.1109/CCNC65079.2026.11366337</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid" style="grid-template-columns:2fr 1fr; grid-template-rows: 1fr 1fr;">
+              <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel" onclick="openLightbox(this.src, this.alt)" style="grid-row:span 2;" />
+              <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Delay-Doppler channel" onclick="openLightbox(this.src, this.alt)" />
+              <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="BER comparison" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">Communications · Published</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">OTFS for underwater acoustic communications</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Developed an OTFS-based underwater acoustic communication system in MATLAB. Modeled medium-depth channel scenarios in both delay-time and delay-Doppler domains. Achieved BER = 10⁻³ at 25 dB SNR for a 10 kHz acoustic signal at 100 m depth using an MPA detector.
+              </p>
+              <div class="project-tags">
+                <span class="tag">OTFS</span>
+                <span class="tag">Underwater acoustics</span>
+                <span class="tag">MPA detector</span>
+                <span class="tag">MATLAB</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Outcome</div>
+              <div class="value">Published — APWiMob 2025.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid">
+              <img src="Drone RF images/spectral_complezxity_fingerprint.png" alt="Spectral complexity fingerprint" onclick="openLightbox(this.src, this.alt)" />
+              <img src="Drone RF images/ensemble_confusion_matrix.jpeg" alt="Ensemble confusion matrix" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">Machine Learning · RF</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">Drone RF signal classification</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Engineered an 89-feature IQ signal extraction pipeline — spectral entropy, PAPR, kurtosis, band-energy ratios, temporal burst statistics — from 17,000+ raw RF captures across seven drone and noise classes. Hierarchical SVM and MLP ensemble achieved 66.9% balanced accuracy across −12 to +30 dB SNR. SNR-stratified analysis identified scalar feature information loss as the performance bottleneck, motivating a CNN extension.
+              </p>
+              <div class="project-tags">
+                <span class="tag">IQ signals</span>
+                <span class="tag">SVM</span>
+                <span class="tag">MLP</span>
+                <span class="tag">Feature engineering</span>
+                <span class="tag">Python</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Next step</div>
+              <div class="value">CNN extension in PyTorch — replacing scalar feature pipeline with end-to-end deep learning on raw IQ.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div class="project-images">
+            <div class="project-images-grid" style="grid-template-columns:1fr 1fr; grid-template-rows: 1fr 1fr;">
+              <img src="MMF images/MMF_Transmission_Amplitude.png" alt="Transmission matrix amplitude" onclick="openLightbox(this.src, this.alt)" />
+              <img src="MMF images/MMF_Transmission_Phase.png" alt="Transmission matrix phase" onclick="openLightbox(this.src, this.alt)" />
+              <img src="MMF images/MMF_Capacity_vs_D.png" alt="Capacity vs modes" onclick="openLightbox(this.src, this.alt)" />
+              <img src="MMF images/MMF_Capacity_vs_Section_Length.png" alt="Capacity vs section length" onclick="openLightbox(this.src, this.alt)" />
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-top">
+              <p class="eyebrow">Optical Systems · TU Munich</p>
+              <h3 class="card-heading" style="margin-top:0.75rem;">Linear channel modeling for multi-mode fibers</h3>
+              <p class="body-text" style="margin-top:1rem;">
+                Bachelor's thesis at TU Munich under Prof. Norbert Hanik. Modeled the MMF channel using a multi-section matrix propagation framework in the strong coupling regime. Analyzed modal dispersion and mode-dependent losses. Implemented ZF and LMMSE equalizers and computed MMSE achievable information rates across fiber parameter configurations via Monte Carlo simulation.
+              </p>
+              <div class="project-tags">
+                <span class="tag">MMF</span>
+                <span class="tag">LMMSE</span>
+                <span class="tag">Mode coupling</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">MDM</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <div class="label">Outcome</div>
+              <div class="value">Undergraduate thesis, TU Munich Institute for Communications Engineering, Dec. 2024.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-heading">Publications</h2>
+        <span class="caption">First-author</span>
+      </div>
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <div class="pub-index">01</div>
+          <div class="pub-body">
+            <div class="pub-title">Embedded Pilot Code-Aided Delay-Doppler Domain Channel Estimation</div>
+            <div class="pub-meta">T. Agrawal, R. Kadlimatti · IEEE CCNC 2026, Las Vegas, NV · DOI: 10.1109/CCNC65079.2026.11366337</div>
+            <a href="https://doi.org/10.1109/CCNC65079.2026.11366337" target="_blank" rel="noreferrer" class="pub-link">View on IEEE Xplore →</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-index">02</div>
+          <div class="pub-body">
+            <div class="pub-title">Comparison of Channel Equalization Methods for an OTFS-Based Underwater Acoustic Communication System</div>
+            <div class="pub-meta">T. Agrawal, R. Kadlimatti · APWiMob 2025</div>
+            <a href="#" class="pub-link">IEEE Xplore →</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-index">03</div>
+          <div class="pub-body">
+            <div class="pub-title">A Scalable Microstrip Patch Antenna Array for Satellite Applications</div>
+            <div class="pub-meta">T. Agrawal, S. Baudha · PIER Journal · Under review</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-heading">Capabilities</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-block">
+          <p class="eyebrow">RF & Hardware</p>
+          <ul>
+            <li>Zynq UltraScale+ RFSoC (ZCU670)</li>
+            <li>Simulink model-based design</li>
+            <li>Vivado RTL implementation</li>
+            <li>STM32 C/C++ firmware</li>
+            <li>ESP32 / FreeRTOS</li>
+            <li>PCB design & JLCPCB fabrication</li>
+            <li>GPSDO, VNA, signal analyzers</li>
+            <li>Phased arrays, anechoic chamber</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <p class="eyebrow">Signal Processing & Comms</p>
+          <ul>
+            <li>MATLAB (channel modeling, MPC, MMSE)</li>
+            <li>OTFS / AFDM / OFDM transceivers</li>
+            <li>Delay-Doppler channel estimation</li>
+            <li>MPA, LMMSE, ZF detection</li>
+            <li>GNU Radio</li>
+            <li>CST Studio Suite</li>
+            <li>Keysight ADS</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <p class="eyebrow">ML & Software</p>
+          <ul>
+            <li>Python, NumPy, scikit-learn</li>
+            <li>PyTorch</li>
+            <li>IQ feature engineering</li>
+            <li>SVM, MLP, DBSCAN, CNN</li>
+            <li>C/C++, Verilog</li>
+            <li>Git, GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
         <div>
-          <h2 class="text-2xl font-bold tracking-tight">Featured projects</h2>
-          <p class="mt-2 text-slate-600">Tap any image to expand it.</p>
-        </div>
-      </div>
-
-      <div class="mt-8 grid gap-6 lg:grid-cols-2">
-
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <div class="grid gap-0 lg:grid-cols-2">
-            <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="mmWave channel sounding images/IMG_1731.JPG" data-alt="Indoor mmWave receiver cart setup">
-                <img src="mmWave channel sounding images/IMG_1731.JPG" alt="Indoor mmWave receiver cart setup" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="mmWave channel sounding images/IMG_1623_jpeg.jpg" data-alt="Outdoor distributed channel sounding setup">
-                <img src="mmWave channel sounding images/IMG_1623_jpeg.jpg" alt="Outdoor distributed channel sounding setup" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="mmWave channel sounding images/IMG_1729.jpeg" data-alt="Outdoor mmWave sounding carts">
-                <img src="mmWave channel sounding images/IMG_1729.jpeg" alt="Outdoor mmWave sounding carts" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Research + Hardware</p>
-              <h3 class="mt-3 text-2xl font-bold">Outdoor mmWave channel sounding at 28 GHz</h3>
-              <p class="mt-4 leading-7 text-slate-600">
-                Built and deployed a coherent distributed MIMO channel sounder integrating GPSDO-disciplined synchronization, IF-over-fiber interconnects, phased-array systems, and outdoor receiver/transmitter carts for urban 28 GHz propagation measurements.
-              </p>
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Hardware stack</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    GPS clocks, phased arrays, IF-over-fiber links, battery-powered mobile carts, RF synchronization, outdoor measurement rigs.
-                  </div>
-                </div>
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Research focus</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Distributed MIMO sounding, synchronization stability, wideband propagation characterization, and 6G urban channel measurements.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <div class="grid gap-0 lg:grid-cols-2">
-            <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="Cluster Tracking images/MPC_Trajectory_Map.png" data-alt="Unified master trajectory map for MPC clustering">
-                <img src="Cluster Tracking images/MPC_Trajectory_Map.png" alt="Unified master trajectory map for MPC clustering" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="Cluster Tracking images/MPC_Single_Slice.png" data-alt="Single PDP slice for MPC extraction">
-                <img src="Cluster Tracking images/MPC_Single_Slice.png" alt="Single PDP slice for MPC extraction" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="Cluster Tracking images/MPC_Path_Gain.png" data-alt="Path gain heatmap for MPC extraction">
-                <img src="Cluster Tracking images/MPC_Path_Gain.png" alt="Path gain heatmap for MPC extraction" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Signal Processing</p>
-              <h3 class="mt-3 text-2xl font-bold">Wideband PDP multipath component extraction</h3>
-              <p class="mt-4 leading-7 text-slate-600">
-                Designed a custom multi-stage MPC extraction pipeline in MATLAB for wideband PDP channel data without angular information, treating the delay-power profile as a 2D image for robust peak detection followed by DBSCAN clustering with geometric target organization.
-              </p>
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Pipeline</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Peak detection, stitched trajectory tracking, and DBSCAN clustering of delay-power paths.
-                  </div>
-                </div>
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Output</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Per-MPC delay profiles recovered via constrained least squares with differential matrix formulation.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <div class="grid gap-0 lg:grid-cols-2">
-            <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" data-alt="P3 code correlation outputs for MIMO channel estimation">
-                <img src="Code-aided pilot images/MIMO Channel_P3Correlation (1).png" alt="P3 code correlation outputs for MIMO channel estimation" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="Code-aided pilot images/PAPR (1).png" data-alt="PAPR CCDF comparison for pilot schemes">
-                <img src="Code-aided pilot images/PAPR (1).png" alt="PAPR CCDF comparison for pilot schemes" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="Code-aided pilot images/Figure_1 (1).png" data-alt="Delay-Doppler pilot arrangement and channel estimation visuals">
-                <img src="Code-aided pilot images/Figure_1 (1).png" alt="Delay-Doppler pilot arrangement and channel estimation visuals" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Communications</p>
-              <h3 class="mt-3 text-2xl font-bold">Pilot-coded OTFS channel estimation</h3>
-              <p class="mt-4 leading-7 text-slate-600">
-                Implemented embedded pilot code-aided delay-Doppler estimation for OTFS and extended the idea to MIMO using code sets with strong correlation properties.
-              </p>
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Key result</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Reduced PAPR while preserving accurate channel estimation and BER performance compared to a single-symbol pilot.
-                  </div>
-                </div>
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Paper outcome</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    IEEE CCNC 2026 publication on embedded pilot code-aided delay-Doppler channel estimation.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <div class="grid gap-0 lg:grid-cols-2">
-            <div class="grid gap-2 p-2 md:grid-cols-3 md:auto-rows-[10rem]">
-              <button class="image-open block focus:outline-none md:col-span-2 md:row-span-2" data-src="UWA images/Medium depth delay-time 2 (1).png" data-alt="Underwater delay-time channel visualization">
-                <img src="UWA images/Medium depth delay-time 2 (1).png" alt="Underwater delay-time channel visualization" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" data-alt="Underwater delay-Doppler channel visualization">
-                <img src="UWA images/Medium depth h0=100 ht0=40 hr0=20 d=1k delay-doppler 2 (1).png" alt="Underwater delay-Doppler channel visualization" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-              <button class="image-open block focus:outline-none" data-src="UWA images/Medium-deep N=16 M=64 16Q.png" data-alt="Underwater BER comparison across detectors">
-                <img src="UWA images/Medium-deep N=16 M=64 16Q.png" alt="Underwater BER comparison across detectors" class="h-36 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Signal Processing</p>
-              <h3 class="mt-3 text-2xl font-bold">Underwater acoustic communications and channel scenario analysis</h3>
-              <p class="mt-4 leading-7 text-slate-600">
-                Built and compared OTFS-based underwater channel models and detector performance across time-delay and delay-Doppler scenarios.
-              </p>
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Channel scenario</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Medium-depth underwater channel visualizations in both time-delay and delay-Doppler domains.
-                  </div>
-                </div>
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Performance view</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Detector comparison across MRC, MPA, time-domain LMMSE, OFDM LMMSE, and OFDM ZF.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Optical Systems</p>
-          <h3 class="mt-3 text-2xl font-bold">Low-complexity equalization techniques for multi-mode fibers</h3>
-          <p class="mt-4 leading-7 text-slate-600">
-            Built a multi-section MMF channel model in the strong-coupling regime and studied modal dispersion, mode-dependent losses, mutual information, and achievable rates under varying fiber parameters.
+          <p class="eyebrow" style="margin-bottom:1.5rem;">Get in touch</p>
+          <h2 class="section-heading">Open to research conversations and <span class="display-italic">technically challenging</span> problems.</h2>
+          <p class="body-text" style="margin-top:1.5rem;">
+            Particularly interested in wireless physical layer, RF systems, and ML-for-communications roles and collaborations.
           </p>
-
-          <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Transmission_Amplitude.png" data-alt="Transmission matrix amplitude in strong coupling regime for D = 132">
-              <img src="MMF images/MMF_Transmission_Amplitude.png" alt="Transmission matrix amplitude in strong coupling regime for D = 132" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Transmission_Phase.png" data-alt="Transmission matrix phase in strong coupling regime for D = 132">
-              <img src="MMF images/MMF_Transmission_Phase.png" alt="Transmission matrix phase in strong coupling regime for D = 132" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Fiber_Model.png" data-alt="Multi-section fiber model with spans and EDFAs">
-              <img src="MMF images/MMF_Fiber_Model.png" alt="Multi-section fiber model with spans and EDFAs" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Capacity_vs_Modes.png" data-alt="Total capacity with the number of modes">
-              <img src="MMF images/MMF_Capacity_vs_Modes.png" alt="Total capacity with the number of modes" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Capacity_vs_D.png" data-alt="Variation of capacity with D">
-              <img src="MMF images/MMF_Capacity_vs_D.png" alt="Variation of capacity with D" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none" data-src="MMF images/MMF_Capacity_vs_Section_Length.png" data-alt="Variation of capacity with section length">
-              <img src="MMF images/MMF_Capacity_vs_Section_Length.png" alt="Variation of capacity with section length" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-            <button class="image-open focus:outline-none md:col-span-2 lg:col-span-3" data-src="MMF images/MMF_LP_Modes.png" data-alt="Spatial shape of the first 6 LP modes">
-              <img src="MMF images/MMF_LP_Modes.png" alt="Spatial shape of the first 6 LP modes" class="h-64 w-full rounded-2xl object-cover cursor-zoom-in" />
-            </button>
-          </div>
-
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl bg-slate-50 p-4">
-              <div class="text-sm font-semibold text-slate-900">Model</div>
-              <div class="mt-2 text-sm leading-6 text-slate-600">
-                Strong coupling, multi-section propagation, GD and MDL analysis, and MMSE/LMMSE-style receiver behavior.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-blue-50 p-4">
-              <div class="text-sm font-semibold text-slate-900">Results</div>
-              <div class="mt-2 text-sm leading-6 text-slate-600">
-                Capacity and penalty trends versus mode count, section length, and amplifier spacing.
-              </div>
-            </div>
-          </div>
-        </article>
-      
-        <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-soft lg:col-span-2">
-          <div class="grid gap-0 lg:grid-cols-2">
-            <div class="grid gap-2 p-2 md:grid-cols-2">
-              <button class="image-open block focus:outline-none" data-src="Drone RF images/spectral_complezxity_fingerprint.png" data-alt="Spectral Complexity Fingerprint">
-                <img src="Drone RF images/spectral_complezxity_fingerprint.png" alt="Spectral Complexity Fingerprint" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-
-              <button class="image-open block focus:outline-none" data-src="Drone RF images/ensemble_confusion_matrix.jpeg" data-alt="Ensemble Confusion Matrix">
-                <img src="Drone RF images/ensemble_confusion_matrix.jpeg" alt="Ensemble Confusion Matrix" class="h-72 w-full rounded-2xl object-cover md:h-full cursor-zoom-in" />
-              </button>
-            </div>
-
-            <div class="p-8">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-blue-600">Machine Learning + RF</p>
-              <h3 class="mt-3 text-2xl font-bold">Drone RF Signal Classification Using Feature Engineering and NumPy-Based Models</h3>
-
-              <p class="mt-4 leading-7 text-slate-600">
-                Developed lightweight RF drone signal classification pipelines using 89 engineered IQ-domain features spanning spectral, temporal, phase, and burst statistics. Evaluated hierarchical SVMs, MLPs, and ensemble classifiers on 17,000+ RF captures across seven drone/noise classes.
-              </p>
-
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Feature Engineering</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Spectral entropy, PAPR, kurtosis, band-energy ratios, temporal burst statistics, and IQ-domain features extracted from raw RF captures.
-                  </div>
-                </div>
-
-                <div class="rounded-2xl bg-blue-50 p-4">
-                  <div class="text-sm font-semibold text-slate-900">Best Result</div>
-                  <div class="mt-2 text-sm leading-6 text-slate-600">
-                    Ensemble of hierarchical SVM and MLP models achieved 66.9% balanced classification accuracy across seven RF classes.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="research" class="py-10">
-      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h2 class="text-2xl font-bold tracking-tight">Research highlights</h2>
-        <div class="mt-6 grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl bg-slate-50 p-6">
-            <h3 class="font-semibold">Publications</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              IEEE CCNC 2026 and APWiMob 2025 work on delay-Doppler estimation and OTFS underwater communications.
-            </p>
-          </div>
-          <div class="rounded-2xl bg-slate-50 p-6">
-            <h3 class="font-semibold">Instrumentation</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Hands-on experience with VNA, AWG, signal analyzers, phased arrays, and anechoic chamber calibration.
-            </p>
-          </div>
-          <div class="rounded-2xl bg-slate-50 p-6">
-            <h3 class="font-semibold">Implementation</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Firmware, MATLAB simulations, and full-stack system integration from theory to hardware validation.
-            </p>
-          </div>
+        </div>
+        <div class="contact-right">
+          <a href="mailto:tanayagr@usc.edu" class="contact-link">
+            <span class="cl-label">Email</span>
+            <span class="cl-value">tanayagr@usc.edu</span>
+            <span class="cl-arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="contact-link">
+            <span class="cl-label">LinkedIn</span>
+            <span class="cl-value">tanay-agrawal-47717530b</span>
+            <span class="cl-arrow">↗</span>
+          </a>
+          <a href="https://github.com/tanay-28" target="_blank" rel="noreferrer" class="contact-link">
+            <span class="cl-label">GitHub</span>
+            <span class="cl-value">tanay-28</span>
+            <span class="cl-arrow">↗</span>
+          </a>
+          <a href="https://scholar.google.com" target="_blank" rel="noreferrer" class="contact-link">
+            <span class="cl-label">Google Scholar</span>
+            <span class="cl-value">Tanay Agrawal</span>
+            <span class="cl-arrow">↗</span>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="py-16">
-      <div class="rounded-3xl bg-slate-950 px-8 py-12 text-white shadow-soft md:px-12">
-        <div class="grid gap-8 md:grid-cols-[1.4fr,0.6fr] md:items-end">
-          <div>
-            <h2 class="text-3xl font-bold tracking-tight">Let’s connect</h2>
-            <p class="mt-4 max-w-2xl text-slate-300 leading-7">
-              Open to conversations about wireless research, RF systems, signal processing, and technically challenging projects.
-            </p>
-          </div>
-          <div class="flex flex-col gap-3 md:items-end">
-            <a href="mailto:tanayagr@usc.edu" class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5">
-              tanayagr@usc.edu
-            </a>
-            <a href="https://linkedin.com/in/tanay-agrawal-47717530b" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">
-              LinkedIn profile
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--rule);">
+    <div class="container">
+      <footer>
+        <span class="caption">Tanay Agrawal · USC WiDeS · Los Angeles</span>
+        <span class="caption">2025–2027</span>
+      </footer>
+    </div>
+  </div>
 
-  <footer class="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
-    Built with Tailwind CSS • Designed for GitHub Pages
-  </footer>
-
-  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
-    <button id="lightbox-close" class="absolute right-4 top-4 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20">
-      Close
-    </button>
-    <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-[95vw] rounded-2xl border border-white/10 shadow-2xl" />
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">Close</button>
+    <img id="lightbox-img" src="" alt="" />
   </div>
 
   <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
-
     function openLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || 'Expanded image';
-      lightbox.classList.remove('hidden');
-      lightbox.classList.add('flex');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt || '';
+      document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-      lightbox.classList.add('hidden');
-      lightbox.classList.remove('flex');
-      lightboxImg.src = '';
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-img').src = '';
       document.body.style.overflow = '';
     }
 
-    document.querySelectorAll('.image-open').forEach((el) => {
-      el.addEventListener('click', () => {
-        openLightbox(el.dataset.src, el.dataset.alt);
-      });
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
     });
 
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    lightboxClose.addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-        closeLightbox();
-      }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
     });
   </script>
 </body>
