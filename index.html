@@ -293,12 +293,14 @@
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      filter: grayscale(1) contrast(1.02);
+      filter: grayscale(0) contrast(1.02); /* Set to constant full color */
       cursor: zoom-in;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .project-images-grid img:hover { filter: grayscale(0.1) contrast(1); }
+    .project-images-grid img:hover { 
+      transform: scale(1.02); /* Gentle zoom interaction stays */
+    }
 
     .project-images-grid .img-tall {
       grid-row: span 2;
@@ -579,7 +581,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="container">
       <div class="nav-inner">
@@ -593,7 +594,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -639,7 +639,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects" style="padding-bottom: 0;">
     <div class="container">
       <div class="section-header">
@@ -650,7 +649,6 @@
 
     <div class="projects-stack">
 
-      <!-- Project 1 (Clean Minimal Variant) -->
       <div class="project-card">
         <div class="container">
           <div class="project-grid-inner">
@@ -687,7 +685,6 @@
         </div>
       </div>
 
-      <!-- Project 2 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
         <div class="container">
           <div class="project-grid-inner">
@@ -723,7 +720,6 @@
         </div>
       </div>
 
-      <!-- Project 3 (Clean Minimal Variant) -->
       <div class="project-card">
         <div class="container">
           <div class="project-grid-inner">
@@ -760,7 +756,6 @@
         </div>
       </div>
 
-      <!-- Project 4 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
         <div class="container">
           <div class="project-grid-inner">
@@ -796,7 +791,6 @@
         </div>
       </div>
 
-      <!-- Project 5 (Clean Minimal Variant) -->
       <div class="project-card">
         <div class="container">
           <div class="project-grid-inner">
@@ -830,7 +824,6 @@
         </div>
       </div>
 
-      <!-- Project 6 (Accented Slate Blue Panel Variant) -->
       <div class="project-card accented-variant">
         <div class="container">
           <div class="project-grid-inner">
@@ -869,7 +862,6 @@
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
   <section id="publications">
     <div class="container">
       <div class="section-header">
@@ -908,7 +900,6 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="container">
       <div class="section-header">
@@ -955,7 +946,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
       <div class="contact-grid">
@@ -992,7 +982,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div class="container">
     <footer>
       <span class="caption">Tanay Agrawal · USC WiDeS · Los Angeles</span>
@@ -1000,7 +989,6 @@
     </footer>
   </div>
 
-  <!-- LIGHTBOX CONTAINER -->
   <div id="lightbox">
     <button id="lightbox-close" onclick="closeLightbox()">Close</button>
     <img id="lightbox-img" src="" alt="" />
