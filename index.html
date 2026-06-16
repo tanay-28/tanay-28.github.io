@@ -316,6 +316,36 @@
       border-left: 1px solid var(--rule);
     }
 
+    /* Mini Text-Only Project Cards */
+    .project-card-mini {
+      border-top: 1px solid var(--rule);
+      width: 100%;
+      padding: 4rem 0;
+    }
+    
+    .project-card-mini:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+    
+    .project-card-mini-inner {
+      display: grid;
+      grid-template-columns: 0.4fr 1.6fr;
+      gap: 3rem;
+    }
+    
+    .project-card-mini.accented-variant {
+      background-color: var(--bg-slate);
+    }
+    
+    .project-card-mini.accented-variant .project-mini-content {
+      color: var(--text-light);
+    }
+    
+    .project-card-mini.accented-variant .eyebrow { color: rgba(255, 255, 255, 0.75); }
+    .project-card-mini.accented-variant .card-heading { color: var(--text-light); }
+    .project-card-mini.accented-variant .body-text { color: rgba(255, 255, 255, 0.9); }
+    .project-card-mini.accented-variant .project-link { border-bottom: 1px solid var(--text-light); color: var(--text-light); }
+
     /* Colored Variant Style Correction */
     .project-card.accented-variant {
       background-color: var(--bg-slate);
@@ -333,6 +363,7 @@
     .project-card.accented-variant .project-content .project-result { border-top: 1px solid rgba(255, 255, 255, 0.2); }
     .project-card.accented-variant .project-content .project-result .label { color: rgba(255, 255, 255, 0.7); }
     .project-card.accented-variant .project-content .project-result .value { color: var(--text-light); }
+    .project-card.accented-variant .project-content .project-link { border-bottom: 1px solid var(--text-light); color: var(--text-light); }
 
     .project-top .card-heading { 
       margin-top: 1rem; 
@@ -380,6 +411,22 @@
       font-size: 0.9rem;
       color: var(--text-muted);
     }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text-dark);
+      padding-bottom: 0.25rem;
+      transition: opacity 0.2s ease;
+    }
+    
+    .project-link:hover { opacity: 0.5; }
 
     /* ── Editorial Publication Index ── */
     .pub-list { display: flex; flex-direction: column; }
@@ -571,6 +618,7 @@
       .skills-grid { grid-template-columns: 1fr; }
       .skill-block { border-right: none; border-bottom: 1px solid var(--rule); padding: 2.5rem 0; }
       .skill-block:last-child { border-bottom: none; }
+      .project-card-mini-inner { grid-template-columns: 1fr; gap: 1rem; }
     }
     
     @media (max-width: 768px) {
@@ -750,6 +798,7 @@
               <div class="project-result">
                 <div class="label">Outcome</div>
                 <div class="value">Published — IEEE CCNC 2026, Las Vegas. DOI: 10.1109/CCNC65079.2026.11366337</div>
+                <a href="https://github.com/tanay-28/Embedded-pilot-code-aided-delay-Doppler-domain-channel-estimation" target="_blank" rel="noreferrer" class="project-link">View Repository →</a>
               </div>
             </div>
           </div>
@@ -785,6 +834,7 @@
               <div class="project-result">
                 <div class="label">Outcome</div>
                 <div class="value">Published — APWiMob 2025.</div>
+                <a href="https://github.com/tanay-28/Comparison-of-Channel-Equalization-Methods-for-an-OTFS-Based-UAC-System" target="_blank" rel="noreferrer" class="project-link">View Repository →</a>
               </div>
             </div>
           </div>
@@ -818,6 +868,7 @@
               <div class="project-result">
                 <div class="label">Next step</div>
                 <div class="value">CNN extension in PyTorch — replacing scalar feature pipeline with end-to-end deep learning on raw IQ.</div>
+                <a href="https://github.com/AhhanaGupta/EE559_ML_Project" target="_blank" rel="noreferrer" class="project-link">View Repository →</a>
               </div>
             </div>
           </div>
@@ -854,6 +905,36 @@
                 <div class="label">Outcome</div>
                 <div class="value">Undergraduate thesis, TU Munich Institute for Communications Engineering, Dec. 2024.</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-mini">
+        <div class="container">
+          <div class="project-card-mini-inner">
+            <p class="eyebrow">Embedded Systems</p>
+            <div class="project-mini-content">
+              <h3 class="card-heading" style="text-transform: uppercase; font-size: 1.3rem;">ESP32 WiFi Sniffer</h3>
+              <p class="body-text" style="margin-top: 0.75rem; color: #333; max-width: 60ch;">
+                An optimized raw IEEE 802.11 frame capture application utilizing the ESP32 promiscuous mode architecture. Parses MAC header frames, RSSI metrics, and channel distribution analytics over local terminal environments.
+              </p>
+              <a href="https://github.com/tanay-28/ESP32_WiFi_Sniffer" target="_blank" rel="noreferrer" class="project-link">View Repository →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-mini accented-variant">
+        <div class="container">
+          <div class="project-card-mini-inner">
+            <p class="eyebrow">Embedded Systems</p>
+            <div class="project-mini-content">
+              <h3 class="card-heading" style="text-transform: uppercase; font-size: 1.3rem;">ESP32 BLE Scanner</h3>
+              <p class="body-text" style="margin-top: 0.75rem; max-width: 60ch;">
+                A low-overhead Bluetooth Low Energy device scanning platform engineered for high-throughput beacon advertising acquisition, parsing GATT service UUID protocols and signal mapping structures.
+              </p>
+              <a href="https://github.com/tanay-28/ESP32_BLE_Scanner" target="_blank" rel="noreferrer" class="project-link">View Repository →</a>
             </div>
           </div>
         </div>
@@ -972,11 +1053,10 @@
             <span class="cl-value">tanay-28</span>
             <span class="cl-arrow">↗</span>
           </a>
-<a href="https://scholar.google.com/citations?user=-FTwnHEAAAAJ&hl=en" target="_blank" rel="noreferrer" class="contact-link">
-<span class="cl-label">Scholar</span>
-<span class="cl-value">Google Scholar</span>
-<span class="cl-arrow">↗</span>
-</a>
+          <a href="#" target="_blank" rel="noreferrer" class="contact-link">
+            <span class="cl-label">Scholar</span>
+            <span class="cl-value">Google Scholar</span>
+            <span class="cl-arrow">↗</span>
           </a>
         </div>
       </div>
